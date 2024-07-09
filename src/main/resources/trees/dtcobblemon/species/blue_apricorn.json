@@ -1,0 +1,24 @@
+{
+    "family": "dtcobblemon:apricorn",
+    "tapering": 0.6,
+    "signal_energy": 9.0,
+    "growth_rate": 0.8,
+    "leaves_properties": "dtcobblemon:apricorn",
+    "perfect_biomes": { "types": [ "overworld" ] },
+    "primitive_sapling": "cobblemon:blue_apricorn",
+    "fruits": [
+        "dtcobblemon:blue_apricorn"
+    ],
+    "features" : [
+        {
+            "name": "fruit",
+            "properties": {
+                "fruit": "dtcobblemon:blue_apricorn",
+                "fruiting_radius": 3
+            }
+        }
+    ],
+    "texture_overrides":{
+        "seed": "cobblemon:item/blue_apricorn_seed"
+    }
+}

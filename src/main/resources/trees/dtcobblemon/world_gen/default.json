@@ -1,0 +1,63 @@
+[
+  {
+    "select": {
+      "tag": "#cobblemon:has_feature/apricorns_dense"
+    },
+    "apply": {
+      "species": {
+        "method": "SPLICE_BEFORE",
+        "random": {
+          "dtcobblemon:blue_apricorn": 1,
+          "dtcobblemon:green_apricorn": 1,
+          "dtcobblemon:red_apricorn": 1,
+          "dtcobblemon:black_apricorn": 1,
+          "dtcobblemon:yellow_apricorn": 1,
+          "dtcobblemon:white_apricorn": 1,
+          "dtcobblemon:pink_apricorn": 1,
+          "...": 24
+        }
+      }
+    }
+  },
+
+  {
+    "select": {
+      "tag": "#cobblemon:has_feature/apricorns_normal"
+    },
+    "apply": {
+      "species": {
+        "method": "SPLICE_BEFORE",
+        "random": {
+          "dtcobblemon:blue_apricorn": 1,
+          "dtcobblemon:green_apricorn": 1,
+          "dtcobblemon:red_apricorn": 1,
+          "dtcobblemon:black_apricorn": 1,
+          "dtcobblemon:yellow_apricorn": 1,
+          "dtcobblemon:white_apricorn": 1,
+          "dtcobblemon:pink_apricorn": 1,
+          "...": 48
+        }
+      }
+    }
+  },
+  {
+    "select": {
+      "tag": "#cobblemon:has_feature/apricorns_sparse"
+    },
+    "apply": {
+      "species": {
+        "method": "SPLICE_BEFORE",
+        "random": {
+          "dtcobblemon:blue_apricorn": 1,
+          "dtcobblemon:green_apricorn": 1,
+          "dtcobblemon:red_apricorn": 1,
+          "dtcobblemon:black_apricorn": 1,
+          "dtcobblemon:yellow_apricorn": 1,
+          "dtcobblemon:white_apricorn": 1,
+          "dtcobblemon:pink_apricorn": 1,
+          "...": 72
+        }
+      }
+    }
+  }
+]

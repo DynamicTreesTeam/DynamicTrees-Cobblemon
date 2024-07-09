@@ -89,7 +89,13 @@ minecraft {
             ideaModule ideaModule.substring(0, ideaModule.lastIndexOf('.')) + '.datagen'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', mod_id,
+                    '--all',
+                    '--output',
+                    file('src/generated/resources/'),
+                    '--existing', file('src/main/resources/'),
+            '--existing-mod' , "dynamictrees",
+            '--existing-mod' , "cobblemon"
 
             mods {
                 "${mod_id}" {
@@ -140,6 +146,12 @@ repositories {
             includeGroup 'curse.maven'
         }
     }
+    maven {
+        url = "https://harleyoconnor.com/maven"
+    }
+    maven{
+        url = "https://squiddev.cc/maven/"
+    } //cc-twekaed
 }
 
 dependencies {
@@ -152,15 +164,20 @@ dependencies {
 
     // Suggestion Provider Fix
     runtimeOnly fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix-${minecraft_version}:${suggestion_provider_fix_version}")
+    implementation fg.deobf("curse.maven:cobblemon-687131:5375390")
+    implementation fg.deobf("curse.maven:kotlin-for-forge-351264:5402061")
+    implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${minecraft_version}:${property("dt_version")}"))
+    runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-$minecraft_version-core:${property("ccVersion")}"))
+    runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-$minecraft_version-forge:${property("ccVersion")}"))
 }
 
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
-        minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
-        forge_version: forge_version, forge_version_range: forge_version_range,
-        loader_version_range: loader_version_range,
-        mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-        mod_authors: mod_authors, mod_description: mod_description
+            minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version       : forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors         : mod_authors, mod_description: mod_description
     ]
     inputs.properties replaceProperties
 
@@ -183,12 +200,12 @@ tasks.named('jar', Jar).configure {
     archiveClassifier = 'slim'
     manifest {
         attributes([
-                'Specification-Title': mod_id,
-                'Specification-Vendor': mod_authors,
-                'Specification-Version': '1', // We are version 1 of ourselves
-                'Implementation-Title': project.name,
-                'Implementation-Version': mod_version,
-                'Implementation-Vendor': mod_authors,
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1', // We are version 1 of ourselves
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : mod_version,
+                'Implementation-Vendor'   : mod_authors,
                 'Implementation-Timestamp': new Date().format('yyyy-MM-dd\'T\'HH:mm:ssZ')
         ])
     }

@@ -1,0 +1,7 @@
+{
+  "loader": "dynamictrees:branch",
+  "textures": {
+    "bark": "cobblemon:block/stripped_apricorn_log",
+    "rings": "cobblemon:block/stripped_apricorn_log_top"
+  }
+}

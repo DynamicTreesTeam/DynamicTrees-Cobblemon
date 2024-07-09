@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "dtcobblemon:yellow_apricorn",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "age": "3"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "cobblemon:yellow_apricorn"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "dtcobblemon:blocks/yellow_apricorn"
+}

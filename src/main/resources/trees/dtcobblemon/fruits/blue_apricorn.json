@@ -1,0 +1,9 @@
+{
+  "item_stack": "cobblemon:blue_apricorn",
+  "block_shapes": [
+    { "function": "fruit", "parameters": { "radius": 1.5, "height": 3, "stem_length": 1, "fraction": 16 } },
+    { "function": "fruit", "parameters": { "radius": 2, "height": 4, "stem_length": 3, "fraction": 16 } },
+    { "function": "fruit", "parameters": { "radius": 2.5, "height": 5, "stem_length": 4 } },
+    { "function": "fruit", "parameters": { "radius": 3, "height": 6, "stem_length": 4 } }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+    "common_leaves": "dtcobblemon:apricorn",
+    "common_species": "dtcobblemon:blue_apricorn",
+    "primitive_log": "cobblemon:apricorn_log",
+    "primitive_stripped_log": "cobblemon:stripped_apricorn_log",
+    "max_branch_radius": 3
+}
