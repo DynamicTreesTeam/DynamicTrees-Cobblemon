@@ -26,6 +26,12 @@ versionRange="[1.5.2,)"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.${mod_id}]]
+modId="gravelmon"
+mandatory=false
+versionRange="[2.2.1,)"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.${mod_id}]]
 modId="minecraft"
 mandatory=true
 versionRange="${minecraft_version_range}"

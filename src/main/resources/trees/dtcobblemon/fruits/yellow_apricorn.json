@@ -1,4 +1,5 @@
 {
+  "type": "dtcobblemon:apricorn",
   "item_stack": "cobblemon:yellow_apricorn",
   "block_shapes": [
     { "function": "fruit", "parameters": { "radius": 1.5, "height": 3, "stem_length": 1, "fraction": 16 } },

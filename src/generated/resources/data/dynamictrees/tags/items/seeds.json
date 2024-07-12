@@ -3,7 +3,15 @@
     "dtcobblemon:black_apricorn_seed",
     "dtcobblemon:blue_apricorn_seed",
     "dtcobblemon:green_apricorn_seed",
+    {
+      "id": "dtcobblemon:orange_apricorn_seed",
+      "required": false
+    },
     "dtcobblemon:pink_apricorn_seed",
+    {
+      "id": "dtcobblemon:purple_apricorn_seed",
+      "required": false
+    },
     "dtcobblemon:red_apricorn_seed",
     "dtcobblemon:white_apricorn_seed",
     "dtcobblemon:yellow_apricorn_seed"

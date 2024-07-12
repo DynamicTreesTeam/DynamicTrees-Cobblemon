@@ -59,5 +59,54 @@
         }
       }
     }
+  },
+  {
+    "only_if_loaded": "gravelmon",
+    "select": {
+      "tag": "#cobblemon:has_feature/apricorns_dense"
+    },
+    "apply": {
+      "species": {
+        "method": "SPLICE_BEFORE",
+        "random": {
+          "gravelmon:orange_apricorn": 1,
+          "gravelmon:purple_apricorn": 1,
+          "...": 24
+        }
+      }
+    }
+  },
+
+  {
+    "only_if_loaded": "gravelmon",
+    "select": {
+      "tag": "#cobblemon:has_feature/apricorns_normal"
+    },
+    "apply": {
+      "species": {
+        "method": "SPLICE_BEFORE",
+        "random": {
+          "gravelmon:orange_apricorn": 1,
+          "gravelmon:purple_apricorn": 1,
+          "...": 48
+        }
+      }
+    }
+  },
+  {
+    "only_if_loaded": "gravelmon",
+    "select": {
+      "tag": "#cobblemon:has_feature/apricorns_sparse"
+    },
+    "apply": {
+      "species": {
+        "method": "SPLICE_BEFORE",
+        "random": {
+          "gravelmon:orange_apricorn": 1,
+          "gravelmon:purple_apricorn": 1,
+          "...": 72
+        }
+      }
+    }
   }
 ]

@@ -1,6 +1,7 @@
 {
+  "only_if_loaded": "gravelmon",
   "type": "dtcobblemon:apricorn",
-  "item_stack": "cobblemon:white_apricorn",
+  "item_stack": "gravelmon:orange_apricorn",
   "block_shapes": [
     { "function": "fruit", "parameters": { "radius": 1.5, "height": 3, "stem_length": 1, "fraction": 16 } },
     { "function": "fruit", "parameters": { "radius": 2, "height": 4, "stem_length": 3, "fraction": 16 } },

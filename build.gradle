@@ -5,12 +5,11 @@ plugins {
     id 'net.neoforged.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
     id 'org.spongepowered.mixin' version '0.7.+'
-    id 'dev._100media.gradleutils' version '1.+'
+    id "me.modmuss50.mod-publish-plugin" version "0.3.3"
 }
 
 version = "${minecraft_version}-${mod_version}"
 group = mod_group_id
-hundredMedia.mcVersion = minecraft_version
 
 base {
     archivesName = mod_id
@@ -95,7 +94,8 @@ minecraft {
                     file('src/generated/resources/'),
                     '--existing', file('src/main/resources/'),
             '--existing-mod' , "dynamictrees",
-            '--existing-mod' , "cobblemon"
+            '--existing-mod' , "cobblemon",
+            '--existing-mod' , "gravelmon"
 
             mods {
                 "${mod_id}" {
@@ -127,6 +127,7 @@ configurations {
 }
 
 repositories {
+    mavenLocal()
     maven {
         name = 'MinecraftForge'
         url = 'https://maven.minecraftforge.net/'
@@ -136,7 +137,6 @@ repositories {
         }
     }
 
-    maven hundredMedia.get100MediaMaven()
 
     maven {
         name = 'Cursemaven'
@@ -159,9 +159,6 @@ dependencies {
     datagenImplementation sourceSets.main.output
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
-    // Capability Syncer
-    hundredMedia.addJarJarDep('dev._100media.capabilitysyncer:capabilitysyncer', capabilitysyncer_version, capabilitysyncer_version_range)
-
     // Suggestion Provider Fix
     runtimeOnly fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix-${minecraft_version}:${suggestion_provider_fix_version}")
     implementation fg.deobf("curse.maven:cobblemon-687131:5375390")
@@ -169,6 +166,12 @@ dependencies {
     implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${minecraft_version}:${property("dt_version")}"))
     runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-$minecraft_version-core:${property("ccVersion")}"))
     runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-$minecraft_version-forge:${property("ccVersion")}"))
+
+    implementation fg.deobf("curse.maven:gravelmon-928129:5519657")
+    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+    implementation fg.deobf("curse.maven:packet-fixer-689467:5416166")
+    implementation fg.deobf("curse.maven:gravels-extended-battles-930317:5516822")
+    implementation fg.deobf("curse.maven:midnightlib-488090:4980331")
 }
 
 tasks.withType(ProcessResources).configureEach {
@@ -239,6 +242,42 @@ publishing {
     repositories {
         maven {
             url "file://${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
+publishMods {
+    if(publishForge) {
+        file = jar.archiveFile
+        changelog = file("changelog.md").text
+        type = STABLE
+        modLoaders.add("forge")
+        displayName = "${mod_name}-${minecraft_version}-[Forge]-${project.version}"
+        dryRun = dry_run.toBoolean()
+        if (curseforge_publishing_enabled.toBoolean()) {
+            curseforge {
+                projectId = curseforge_project_id
+                accessToken = curseforge_token
+                minecraftVersions.add(minecraft_version)
+                requires {
+                    slug = "dynamictrees"
+                }
+                requires {
+                    slug = "cobblemon"
+                }
+            }
+        }
+        if (modrinth_publishing_enabled.toBoolean()) {
+            modrinth {
+                accessToken = modrinth_token
+                projectId = modrinth_project_id
+                minecraftVersions.add(minecraft_version)
+                requires {
+                    slug = "dynamictrees"
+                }
+                requires {
+                    slug = "cobblemon"
+                }
+            }
         }
     }
 }

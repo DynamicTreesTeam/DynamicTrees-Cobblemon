@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "dtcobblemon:block/apricorn_stage_0"
+    },
+    "age=1": {
+      "model": "dtcobblemon:block/apricorn_stage_1"
+    },
+    "age=2": {
+      "model": "dtcobblemon:block/apricorn_stage_2"
+    },
+    "age=3": {
+      "model": "dtcobblemon:block/red_apricorn"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "only_if_loaded": "gravelmon",
+    "family": "dtcobblemon:apricorn",
+    "tapering": 0.6,
+    "signal_energy": 9.0,
+    "growth_rate": 0.8,
+    "leaves_properties": "dtcobblemon:apricorn",
+    "perfect_biomes": { "types": [ "overworld" ] },
+    "primitive_sapling": "gravelmon:purple_apricorn",
+    "generate_seed": true,
+    "generate_sapling": true,
+    "fruits": [
+        "dtcobblemon:purple_apricorn"
+    ],
+    "features" : [
+        {
+            "name": "fruit",
+            "properties": {
+                "fruit": "dtcobblemon:purple_apricorn",
+                "fruiting_radius": 3
+            }
+        }
+    ],
+    "texture_overrides":{
+        "seed": "gravelmon:item/purple_apricorn_seed"
+    }
+}
