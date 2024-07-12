@@ -248,7 +248,7 @@ publishMods {
                     slug = "dynamictrees"
                 }
                 requires {
-                    slug = "cobblemonmod"
+                    slug = "cobblemon"
                 }
             }
         }
