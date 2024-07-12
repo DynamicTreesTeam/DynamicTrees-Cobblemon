@@ -242,7 +242,7 @@ publishMods {
         if (curseforge_publishing_enabled.toBoolean()) {
             curseforge {
                 projectId = curseforge_project_id
-                accessToken = curseforge_token
+//                accessToken = curseforge_token
                 minecraftVersions.add(minecraft_version)
                 requires {
                     slug = "dynamictrees"
@@ -254,7 +254,7 @@ publishMods {
         }
         if (modrinth_publishing_enabled.toBoolean()) {
             modrinth {
-                accessToken = modrinth_token
+//                accessToken = modrinth_token
                 projectId = modrinth_project_id
                 minecraftVersions.add(minecraft_version)
                 requires {
