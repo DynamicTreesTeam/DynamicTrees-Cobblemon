@@ -1,5 +1,5 @@
 name: Release
-on: [workflow_dispatch] # Manual trigger
+on: [push] # Manual trigger
  
 permissions:
   contents: write
