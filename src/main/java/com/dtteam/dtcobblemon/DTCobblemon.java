@@ -20,7 +20,6 @@ public class DTCobblemon {
     public static final Logger LOGGER = LogManager.getLogger();
 
     public DTCobblemon() {
-        IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         RegistryHandler.setup(MODID);
     }
 
