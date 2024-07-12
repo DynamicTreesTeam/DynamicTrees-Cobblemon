@@ -242,19 +242,19 @@ publishMods {
         if (curseforge_publishing_enabled.toBoolean()) {
             curseforge {
                 projectId = curseforge_project_id
-//                accessToken = curseforge_token
+                accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
                 minecraftVersions.add(minecraft_version)
                 requires {
                     slug = "dynamictrees"
                 }
                 requires {
-                    slug = "cobblemon"
+                    slug = "cobblemonmod"
                 }
             }
         }
         if (modrinth_publishing_enabled.toBoolean()) {
             modrinth {
-//                accessToken = modrinth_token
+                accessToken = providers.environmentVariable("MODRINTH_TOKEN")
                 projectId = modrinth_project_id
                 minecraftVersions.add(minecraft_version)
                 requires {
