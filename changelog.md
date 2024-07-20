@@ -1,3 +1,6 @@
+### Version 1.0.3
+- fixed Orange Apricorn not generating with Gravelmon
+
 ### Version 1.0.2
 - fixed tags, logs should break fine now.
 
