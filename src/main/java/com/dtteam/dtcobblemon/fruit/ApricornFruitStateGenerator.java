@@ -24,8 +24,7 @@ public class ApricornFruitStateGenerator implements Generator<DTBlockStateProvid
                     if (age == maxAge) {
                         BlockModelBuilder builder = provider.models().withExistingParent(getName(block), provider.modLoc("apricorn_stage_" + age));
                         ResourceLocation texture = new ResourceLocation(ForgeRegistries.ITEMS.getKey(input.getItemStack().getItem()).getNamespace(), "block/" + getName(block));
-                        builder = builder.texture("0", texture).texture("particle", texture);
-                        builder = builder.texture("particle", texture);
+                        builder = builder.texture("apricorn", texture);
                         return ConfiguredModel.builder().modelFile(builder).build();
                     }
                     return ConfiguredModel.builder().modelFile(provider.models().getExistingFile(provider.modLoc("apricorn_stage_" + age))).build();

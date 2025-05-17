@@ -3,15 +3,9 @@
     "dtcobblemon:black_apricorn_sapling",
     "dtcobblemon:blue_apricorn_sapling",
     "dtcobblemon:green_apricorn_sapling",
-    {
-      "id": "dtcobblemon:orange_apricorn_sapling",
-      "required": false
-    },
+    "dtcobblemon:orange_apricorn_sapling",
     "dtcobblemon:pink_apricorn_sapling",
-    {
-      "id": "dtcobblemon:purple_apricorn_sapling",
-      "required": false
-    },
+    "dtcobblemon:purple_apricorn_sapling",
     "dtcobblemon:red_apricorn_sapling",
     "dtcobblemon:white_apricorn_sapling",
     "dtcobblemon:yellow_apricorn_sapling"
