@@ -14,7 +14,7 @@
           "dtcobblemon:yellow_apricorn": 1,
           "dtcobblemon:white_apricorn": 1,
           "dtcobblemon:pink_apricorn": 1,
-          "...": 24
+          "...": 96
         }
       }
     }
@@ -35,7 +35,7 @@
           "dtcobblemon:yellow_apricorn": 1,
           "dtcobblemon:white_apricorn": 1,
           "dtcobblemon:pink_apricorn": 1,
-          "...": 48
+          "...": 144
         }
       }
     }
@@ -55,7 +55,7 @@
           "dtcobblemon:yellow_apricorn": 1,
           "dtcobblemon:white_apricorn": 1,
           "dtcobblemon:pink_apricorn": 1,
-          "...": 72
+          "...": 216
         }
       }
     }
@@ -71,7 +71,7 @@
         "random": {
           "gravelmon:orange_apricorn": 1,
           "gravelmon:purple_apricorn": 1,
-          "...": 24
+          "...": 96
         }
       }
     }
@@ -88,7 +88,7 @@
         "random": {
           "gravelmon:orange_apricorn": 1,
           "gravelmon:purple_apricorn": 1,
-          "...": 48
+          "...": 144
         }
       }
     }
@@ -104,7 +104,7 @@
         "random": {
           "gravelmon:orange_apricorn": 1,
           "gravelmon:purple_apricorn": 1,
-          "...": 72
+          "...": 216
         }
       }
     }
