@@ -1,8 +1,10 @@
 {
     "family": "dtcobblemon:apricorn",
     "tapering": 0.6,
-    "signal_energy": 9.0,
+    "signal_energy": 8.0,
     "growth_rate": 0.8,
+    "lowest_branch_height": 4,
+    "soil_longevity": 4,
     "leaves_properties": "dtcobblemon:apricorn",
     "perfect_biomes": { "types": [ "overworld" ] },
     "primitive_saplings": [
