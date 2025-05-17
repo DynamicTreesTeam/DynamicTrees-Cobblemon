@@ -5,7 +5,13 @@
     "growth_rate": 0.8,
     "leaves_properties": "dtcobblemon:apricorn",
     "perfect_biomes": { "types": [ "overworld" ] },
-    "primitive_sapling": "cobblemon:white_apricorn",
+    "primitive_saplings": [
+        "cobblemon:white_apricorn_seed",
+        {
+            "sapling_item": "cobblemon:white_apricorn",
+            "can_craft_seed_to_sapling": false
+        }
+    ],
     "generate_seed": true,
     "generate_sapling": true,
     "fruits": [

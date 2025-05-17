@@ -5,6 +5,13 @@
     "growth_rate": 0.8,
     "leaves_properties": "dtcobblemon:apricorn",
     "perfect_biomes": { "types": [ "overworld" ] },
+    "primitive_saplings": [
+        "cobblemon:black_apricorn_seed",
+        {
+            "sapling_item": "cobblemon:black_apricorn",
+            "can_craft_seed_to_sapling": false
+        }
+    ],
     "primitive_sapling": "cobblemon:black_apricorn",
     "generate_seed": true,
     "generate_sapling": true,
