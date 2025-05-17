@@ -160,9 +160,9 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
     // Suggestion Provider Fix
-    runtimeOnly fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix-${minecraft_version}:${suggestion_provider_fix_version}")
-    implementation fg.deobf("curse.maven:cobblemon-687131:5375390")
-    implementation fg.deobf("curse.maven:kotlin-for-forge-351264:5402061")
+    runtimeOnly(fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix-${minecraft_version}:${suggestion_provider_fix_version}"))
+    implementation(fg.deobf("curse.maven:cobblemon-687131:5375390"))
+    implementation(fg.deobf("curse.maven:kotlin-for-forge-351264:5402061"))
     implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${minecraft_version}:${property("dt_version")}"))
     runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-$minecraft_version-core:${property("ccVersion")}"))
     runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-$minecraft_version-forge:${property("ccVersion")}"))
@@ -172,6 +172,7 @@ dependencies {
     implementation fg.deobf("curse.maven:packet-fixer-689467:5416166")
     implementation fg.deobf("curse.maven:gravels-extended-battles-930317:5516822")
     implementation fg.deobf("curse.maven:midnightlib-488090:4980331")
+
 }
 
 tasks.withType(ProcessResources).configureEach {
