@@ -20,4 +20,8 @@ build
 # other
 eclipse
 run
-/mcmodsrepo/
+runs
+run-data
+
+repo
+/libs
