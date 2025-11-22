@@ -1,4 +1,7 @@
 {
   "primitive_leaves": "cobblemon:apricorn_leaves",
-  "cell_kit": "dynamictrees:azalea"
+  "cell_kit": "dynamictrees:azalea",
+  "texture_overrides": {
+    "leaves": "cobblemon:block/wood/apricorn_leaves"
+  }
 }

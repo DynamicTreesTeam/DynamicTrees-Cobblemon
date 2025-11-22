@@ -29,6 +29,6 @@
         }
     ],
     "texture_overrides":{
-        "seed": "cobblemon:item/white_apricorn_seed"
+        "seed": "cobblemon:item/wood/white_apricorn_seed"
     }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "dtcobblemon:block/apricorn_stage_3",
   "textures": {
-    "apricorn": "cobblemon:block/white_apricorn"
+    "apricorn": "cobblemon:block/crops/white_apricorn"
   }
 }

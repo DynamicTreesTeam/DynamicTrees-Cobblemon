@@ -1,6 +1,6 @@
 {
   "parent": "dynamictrees:item/standard_seed",
   "textures": {
-    "layer0": "cobblemon:item/red_apricorn_seed"
+    "layer0": "cobblemon:item/wood/red_apricorn_seed"
   }
 }

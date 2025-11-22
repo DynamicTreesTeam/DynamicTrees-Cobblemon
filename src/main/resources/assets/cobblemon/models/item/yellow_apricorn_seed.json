@@ -1,6 +1,6 @@
 {
   "parent": "dynamictrees:item/standard_seed",
   "textures": {
-    "layer0": "cobblemon:block/yellow_apricorn_sapling"
+    "layer0": "cobblemon:block/crops/yellow_apricorn_sapling"
   }
 }

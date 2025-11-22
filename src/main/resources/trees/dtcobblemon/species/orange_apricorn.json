@@ -30,6 +30,6 @@
         }
     ],
     "texture_overrides":{
-        "seed": "gravelmon:item/orange_apricorn_seed"
+        "seed": "gravelmon:item/wood/orange_apricorn_seed"
     }
 }
