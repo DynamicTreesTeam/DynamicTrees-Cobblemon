@@ -147,7 +147,6 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
     }
 
     @Override
-    @Deprecated
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         int particleCount = random.nextInt(3);
 
@@ -164,7 +163,7 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
 
     private void spawnHoneyParticles(Level level, BlockPos pos, BlockState state, float rate) {
         if (state.getFluidState().isEmpty() && level.random.nextFloat() < rate) {
-            VoxelShape shape = state.getCollisionShape(level, pos);
+            VoxelShape shape = state.getShape(level, pos);
             double d = shape.max(Direction.Axis.Y);
 
             if (d >= 1.0 && !state.is(BlockTags.IMPERMEABLE)) {

@@ -1,5 +1,6 @@
 package com.dtteam.dtcobblemon.branch;
 
+import com.dtteam.dynamictrees.DynamicTrees;
 import com.dtteam.dynamictrees.block.branch.BasicBranchBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -7,10 +8,13 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.material.Fluids;
+import org.jetbrains.annotations.Nullable;
 
 public class SlatheredSaccharineBranchBlock extends BasicBranchBlock {
 
@@ -22,6 +26,23 @@ public class SlatheredSaccharineBranchBlock extends BasicBranchBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HorizontalDirectionalBlock.FACING);
         super.createBlockStateDefinition(builder);
+    }
+
+    @Override
+    public int setRadius(LevelAccessor level, BlockPos pos, int radius, @Nullable Direction originDir, int flags) {
+        destroyMode = DynamicTrees.DestroyMode.SET_RADIUS;
+        BlockState currentState = level.getBlockState(pos);
+        boolean replacingWater = currentState.getFluidState() == Fluids.WATER.getSource(false);
+        boolean setWaterlogged = replacingWater && radius <= 7;
+        Direction honeyDirection = currentState.is(this) ?
+                currentState.getValue(HorizontalDirectionalBlock.FACING) :
+                Direction.Plane.HORIZONTAL.getRandomDirection(level.getRandom());
+        BlockState newState = this.getStateForRadius(radius)
+                .setValue(WATERLOGGED, setWaterlogged)
+                .setValue(HorizontalDirectionalBlock.FACING, honeyDirection);
+        level.setBlock(pos, newState, flags);
+        destroyMode = DynamicTrees.DestroyMode.SLOPPY;
+        return radius;
     }
 
     public void spawnParticlesAtBlockFace(ParticleOptions particle, Level level, BlockPos pos, Direction direction, int amount) {
