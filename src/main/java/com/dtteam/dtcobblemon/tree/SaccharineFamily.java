@@ -10,6 +10,7 @@ import com.dtteam.dynamictrees.api.registry.TypedRegistry;
 import com.dtteam.dynamictrees.block.branch.BasicBranchBlock;
 import com.dtteam.dynamictrees.block.branch.BranchBlock;
 import com.dtteam.dynamictrees.data.DTDataProvider;
+import com.dtteam.dynamictrees.data.Generator;
 import com.dtteam.dynamictrees.data.builder.BranchLoaderBuilder;
 import com.dtteam.dynamictrees.data.generator.BranchStateGenerator;
 import com.dtteam.dynamictrees.data.provider.DTBlockStateProvider;
@@ -92,21 +93,27 @@ public class SaccharineFamily extends Family {
         if (primSlathered.isPresent() && primSlathered.get() == sourceBlock){
             ResourceLocation bark = primitiveLogLocation;
             ResourceLocation rings = ResourceLocationUtils.suffix(primitiveLogLocation, "_top");
-            if (this.textureOverrides.containsKey("slathered_branch")) {
-                bark = this.textureOverrides.get("slathered_branch");
+            ResourceLocation slathered = ResourceLocationUtils.suffix(primitiveLogLocation, "_slathered");
+            if (this.textureOverrides.containsKey("branch")) {
+                bark = this.textureOverrides.get("branch");
             }
-
             if (this.textureOverrides.containsKey("branch_top")) {
                 rings = this.textureOverrides.get("branch_top");
             }
+            if (this.textureOverrides.containsKey("slathered_branch")) {
+                slathered = this.textureOverrides.get("slathered_branch");
+            }
             textureConsumer.accept("bark", bark);
             textureConsumer.accept("rings", rings);
+            textureConsumer.accept("slathered", slathered);
             return;
         }
         super.addBranchTextures(textureConsumer, primitiveLogLocation, sourceBlock);
     }
 
     public static class SlatheredBranchStateGenerator extends BranchStateGenerator {
+
+        public static final Generator.DependencyKey<Block> PRIMITIVE_SLATHERED_LOG = new Generator.DependencyKey<>("primitive_slathered_log");
 
         @Override
         public void generate(DTDataProvider.BlockState prov, Family input, Dependencies dependencies) {
@@ -116,14 +123,16 @@ public class SaccharineFamily extends Family {
                         Objects.requireNonNull(BuiltInRegistries.BLOCK.getKey(branch)).getPath()
                 ).customLoader(BranchLoaderBuilder.branchBuilders.get(DynamicTreesCobblemon.SLATHERED_BRANCH));
                 Block block = dependencies.get(PRIMITIVE_LOG);
+                Block slathered_block = dependencies.get(PRIMITIVE_SLATHERED_LOG);
                 input.addBranchTextures(builder::texture, provider.block(BuiltInRegistries.BLOCK.getKey(block)), block);
+                input.addBranchTextures(builder::texture, provider.block(BuiltInRegistries.BLOCK.getKey(slathered_block)), slathered_block);
                 provider.simpleBlock(branch, builder.end());
             }
         }
 
         public @NotNull Dependencies gatherDependencies(@NotNull Family input) {
             if (input instanceof SaccharineFamily castedInput)
-                return (new Dependencies()).append(BRANCH, castedInput.getSlatheredBranch()).append(PRIMITIVE_LOG, castedInput.getPrimitiveSlatheredLog());
+                return (new Dependencies()).append(BRANCH, castedInput.getSlatheredBranch()).append(PRIMITIVE_SLATHERED_LOG, castedInput.getPrimitiveSlatheredLog()).append(PRIMITIVE_LOG, castedInput.getPrimitiveLog());
             return super.gatherDependencies(input);
         }
     }

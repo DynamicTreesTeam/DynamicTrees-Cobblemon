@@ -18,6 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -45,14 +46,17 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
     protected final TextureAtlasSprite ringsTexture;
 
     protected final BakedModel[][] sleeves = new BakedModel[6][7];
-    protected final BakedModel[][] cores = new BakedModel[3][8]; // 8 Cores for 3 axis with the bark texture all all 6 sides rotated appropriately.
-    protected final BakedModel[] rings = new BakedModel[8]; // 8 Cores with the ring textures on all 6 sides.
+    protected final BakedModel[][] cores = new BakedModel[3][8];
+    protected final BakedModel[] rings = new BakedModel[8];
+    protected final BakedModel[][] sleeves_slathered = new BakedModel[6][7];
+    protected final BakedModel[][] cores_slathered = new BakedModel[3][8];
 
     public SlatheredBranchBlockBakedModel(IGeometryBakingContext customData, ResourceLocation barkTextureLocation, ResourceLocation ringsTextureLocation, ResourceLocation slatheredTextureLocation,
                                           Function<Material, TextureAtlasSprite> spriteGetter) {
         this.blockModel = new BlockModel(null, new ArrayList<>(), new HashMap<>(), false, BlockModel.GuiLight.FRONT,
                 ItemTransforms.NO_TRANSFORMS, new ArrayList<>());
-        this.blockModel.customData.setRenderTypeHint(customData.getRenderTypeHint());
+        if (customData.getRenderTypeHint() != null)
+            this.blockModel.customData.setRenderTypeHint(customData.getRenderTypeHint());
         this.barkTexture = spriteGetter.apply(new Material(InventoryMenu.BLOCK_ATLAS, barkTextureLocation));
         this.slatheredBarkTexture = spriteGetter.apply(new Material(InventoryMenu.BLOCK_ATLAS, slatheredTextureLocation));
         this.ringsTexture = spriteGetter.apply(new Material(InventoryMenu.BLOCK_ATLAS, ringsTextureLocation));
@@ -65,11 +69,15 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
             if (radius < 8) {
                 for (Direction dir : Direction.values()) {
                     sleeves[dir.get3DDataValue()][i] = bakeSleeve(radius, dir, barkTexture);
+                    sleeves_slathered[dir.get3DDataValue()][i] = bakeSleeve(radius, dir, slatheredBarkTexture);
                 }
             }
             cores[0][i] = bakeCore(radius, Axis.Y, barkTexture); //DOWN<->UP
             cores[1][i] = bakeCore(radius, Axis.Z, barkTexture); //NORTH<->SOUTH
             cores[2][i] = bakeCore(radius, Axis.X, barkTexture); //WEST<->EAST
+            cores_slathered[0][i] = bakeCore(radius, Axis.Y, slatheredBarkTexture); //DOWN<->UP
+            cores_slathered[1][i] = bakeCore(radius, Axis.Z, slatheredBarkTexture); //NORTH<->SOUTH
+            cores_slathered[2][i] = bakeCore(radius, Axis.X, slatheredBarkTexture); //WEST<->EAST
 
             rings[i] = bakeCore(radius, Axis.Y, ringsTexture);
         }
@@ -190,9 +198,10 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
     @NotNull
     @Override
     public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @NotNull RandomSource rand, @NotNull ModelData extraData, @Nullable RenderType renderType) {
-        if (state == null || side != null) {
+        if (state == null || side != null || !state.hasProperty(HorizontalDirectionalBlock.FACING)) {
             return Collections.emptyList();
         }
+        final Direction facingDir = state.getValue(HorizontalDirectionalBlock.FACING);
 
         final List<BakedQuad> quadsList = new ArrayList<>(24);
 
@@ -235,7 +244,10 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
                 // Get quads for core model.
                 if (coreRadius != connections[face.get3DDataValue()]) {
                     if ((coreRingDir == null || coreRingDir != face)) {
-                        quadsList.addAll(cores[coreDir][coreRadius - 1].getQuads(state, face, rand, extraData, renderType));
+                        if (facingDir == face)
+                            quadsList.addAll(cores_slathered[coreDir][coreRadius - 1].getQuads(state, face, rand, extraData, renderType));
+                        else
+                            quadsList.addAll(cores[coreDir][coreRadius - 1].getQuads(state, face, rand, extraData, renderType));
                     } else {
                         quadsList.addAll(rings[coreRadius - 1].getQuads(state, face, rand, extraData, renderType));
                     }
@@ -247,7 +259,10 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
                         final int connRadius = connections[idx];
                         // If the connection side matches the quadpull side then cull the sleeve face.  Don't cull radius-1 connections for leaves (which are partly transparent).
                         if (connRadius > 0 && (connRadius == twigRadius.get() || face != connDir)) {
-                            quadsList.addAll(sleeves[idx][connRadius - 1].getQuads(state, face, rand, extraData, renderType));
+                            if (facingDir == face)
+                                quadsList.addAll(sleeves_slathered[idx][connRadius - 1].getQuads(state, face, rand, extraData, renderType));
+                            else
+                                quadsList.addAll(sleeves[idx][connRadius - 1].getQuads(state, face, rand, extraData, renderType));
                         }
                     }
                 }
