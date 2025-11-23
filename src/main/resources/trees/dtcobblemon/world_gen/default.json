@@ -1,6 +1,21 @@
 [
   {
     "select": {
+      "tag": "#cobblemon:has_feature/saccharine_tree"
+    },
+    "apply": {
+      "species": {
+        "method": "SPLICE_BEFORE",
+        "random": {
+          "dtcobblemon:saccharine": 1,
+          "...": 499
+        }
+      }
+    }
+  },
+
+  {
+    "select": {
       "tag": "#cobblemon:has_feature/apricorns_dense"
     },
     "apply": {
@@ -14,7 +29,7 @@
           "dtcobblemon:yellow_apricorn": 1,
           "dtcobblemon:white_apricorn": 1,
           "dtcobblemon:pink_apricorn": 1,
-          "...": 193
+          "...": 393
         }
       }
     }
@@ -23,26 +38,6 @@
   {
     "select": {
       "tag": "#cobblemon:has_feature/apricorns_normal"
-    },
-    "apply": {
-      "species": {
-        "method": "SPLICE_BEFORE",
-        "random": {
-          "dtcobblemon:blue_apricorn": 1,
-          "dtcobblemon:green_apricorn": 1,
-          "dtcobblemon:red_apricorn": 1,
-          "dtcobblemon:black_apricorn": 1,
-          "dtcobblemon:yellow_apricorn": 1,
-          "dtcobblemon:white_apricorn": 1,
-          "dtcobblemon:pink_apricorn": 1,
-          "...": 293
-        }
-      }
-    }
-  },
-  {
-    "select": {
-      "tag": "#cobblemon:has_feature/apricorns_sparse"
     },
     "apply": {
       "species": {
@@ -61,6 +56,26 @@
     }
   },
   {
+    "select": {
+      "tag": "#cobblemon:has_feature/apricorns_sparse"
+    },
+    "apply": {
+      "species": {
+        "method": "SPLICE_BEFORE",
+        "random": {
+          "dtcobblemon:blue_apricorn": 1,
+          "dtcobblemon:green_apricorn": 1,
+          "dtcobblemon:red_apricorn": 1,
+          "dtcobblemon:black_apricorn": 1,
+          "dtcobblemon:yellow_apricorn": 1,
+          "dtcobblemon:white_apricorn": 1,
+          "dtcobblemon:pink_apricorn": 1,
+          "...": 593
+        }
+      }
+    }
+  },
+  {
     "only_if_loaded": "gravelmon",
     "select": {
       "tag": "#cobblemon:has_feature/apricorns_dense"
@@ -71,7 +86,7 @@
         "random": {
           "gravelmon:orange_apricorn": 1,
           "gravelmon:purple_apricorn": 1,
-          "...": 198
+          "...": 398
         }
       }
     }
@@ -88,7 +103,7 @@
         "random": {
           "gravelmon:orange_apricorn": 1,
           "gravelmon:purple_apricorn": 1,
-          "...": 298
+          "...": 498
         }
       }
     }
@@ -104,7 +119,7 @@
         "random": {
           "gravelmon:orange_apricorn": 1,
           "gravelmon:purple_apricorn": 1,
-          "...": 498
+          "...": 598
         }
       }
     }

@@ -1,0 +1,14 @@
+{
+    "type": "dtcobblemon:saccharine",
+    "common_leaves": "dtcobblemon:saccharine",
+    "common_species": "dtcobblemon:saccharine",
+    "primitive_log": "cobblemon:saccharine_log",
+    "primitive_stripped_log": "cobblemon:stripped_saccharine_log",
+    "max_branch_radius": 8,
+    "texture_overrides": {
+        "branch": "cobblemon:block/wood/saccharine_log",
+        "branch_top": "cobblemon:block/wood/saccharine_log_top",
+        "stripped_branch": "cobblemon:block/wood/saccharine_stripped_log",
+        "stripped_branch_top": "cobblemon:block/wood/saccharine_stripped_log_top"
+    }
+}

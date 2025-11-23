@@ -1,9 +1,11 @@
-// 1.21.1	2025-11-22T18:23:19.4846427	Item Models: dtcobblemon
+// 1.21.1	2025-11-22T20:42:35.9662868	Item Models: dtcobblemon
 b857c68add7dce9b839fe5dce0ff29a4081494c6 assets/dtcobblemon/models/item/apricorn_branch.json
 51e7392d5273b0315010a57931d6ac1d3042a1d4 assets/dtcobblemon/models/item/black_apricorn_seed.json
 62ce62fbb8662ea157838abab96f9d524824c147 assets/dtcobblemon/models/item/blue_apricorn_seed.json
 b95eaaef58574c302da5181d601b247461ef5a01 assets/dtcobblemon/models/item/green_apricorn_seed.json
 4940c87ce95217699da5d03c9e24f33d5b0a5b79 assets/dtcobblemon/models/item/pink_apricorn_seed.json
 f80619b54357f966232f184c52d3534a9b7ef792 assets/dtcobblemon/models/item/red_apricorn_seed.json
+f2acf7c50e2881d97f4dc4e5c3d0c8dbedd14013 assets/dtcobblemon/models/item/saccharine_branch.json
+1451e4c38f20d5eed19d1d04c54db0d330b46e1f assets/dtcobblemon/models/item/saccharine_seed.json
 d71cee1808691eccf89aa978c2f6151fd6171ad5 assets/dtcobblemon/models/item/white_apricorn_seed.json
 acd1af9c3d2744c3d261257cb27e0fd9e3618f1e assets/dtcobblemon/models/item/yellow_apricorn_seed.json

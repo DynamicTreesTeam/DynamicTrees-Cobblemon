@@ -7,6 +7,14 @@
     {
       "type": "dynamictrees:thick_branch_rings",
       "resource": "cobblemon:block/wood/apricorn_stripped_log_top"
+    },
+    {
+      "type": "dynamictrees:thick_branch_rings",
+      "resource": "cobblemon:block/wood/saccharine_log_top"
+    },
+    {
+      "type": "dynamictrees:thick_branch_rings",
+      "resource": "cobblemon:block/wood/saccharine_stripped_log_top"
     }
   ]
 }

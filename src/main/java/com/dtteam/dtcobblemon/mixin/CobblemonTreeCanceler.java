@@ -1,6 +1,7 @@
 package com.dtteam.dtcobblemon.mixin;
 
 import com.cobblemon.mod.neoforge.worldgen.CobblemonBiomeModifiers;
+import com.dtteam.dtcobblemon.DynamicTreesCobblemon;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
@@ -18,10 +19,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class CobblemonTreeCanceler {
     @Inject(method = "add", at = @At("HEAD"), cancellable = true, remap = false)
     private void cancelTreeGen(@NotNull ResourceKey<PlacedFeature> feature, @NotNull GenerationStep.Decoration step, @Nullable TagKey<Biome> validTag, CallbackInfo ci) {
-        if(feature.isFor(Registries.PLACED_FEATURE) && GenerationStep.Decoration.VEGETAL_DECORATION.equals(step)) {
-            if(feature.location().getPath().contains("tree")) {
-                ci.cancel();
-            }
+        //!Services.CONFIG.getBoolConfig(IConfigHelper.WORLD_GEN)
+        if(DynamicTreesCobblemon.DisableCobblemonTrees
+                && feature.isFor(Registries.PLACED_FEATURE)
+                && GenerationStep.Decoration.VEGETAL_DECORATION.equals(step)
+                && feature.location().getPath().contains("tree")) {
+            ci.cancel();
         }
     }
 }

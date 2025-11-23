@@ -1,10 +1,12 @@
 {
   "block.dtcobblemon.apricorn_branch": "Apricorn Tree",
+  "block.dtcobblemon.saccharine_branch": "Saccharine Tree",
   "item.dtcobblemon.black_apricorn_seed": "Black Apricorn Seed",
   "item.dtcobblemon.blue_apricorn_seed": "Blue Apricorn Seed",
   "item.dtcobblemon.green_apricorn_seed": "Green Apricorn Seed",
   "item.dtcobblemon.pink_apricorn_seed": "Pink Apricorn Seed",
   "item.dtcobblemon.red_apricorn_seed": "Red Apricorn Seed",
+  "item.dtcobblemon.saccharine_seed": "Saccharine Cone",
   "item.dtcobblemon.white_apricorn_seed": "White Apricorn Seed",
   "item.dtcobblemon.yellow_apricorn_seed": "Yellow Apricorn Seed",
   "species.dtcobblemon.black_apricorn": "Black Apricorn",
@@ -12,6 +14,7 @@
   "species.dtcobblemon.green_apricorn": "Green Apricorn",
   "species.dtcobblemon.pink_apricorn": "Pink Apricorn",
   "species.dtcobblemon.red_apricorn": "Red Apricorn",
+  "species.dtcobblemon.saccharine": "Saccharine",
   "species.dtcobblemon.white_apricorn": "White Apricorn",
   "species.dtcobblemon.yellow_apricorn": "Yellow Apricorn"
 }

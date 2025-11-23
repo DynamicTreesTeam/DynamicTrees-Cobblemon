@@ -3,7 +3,7 @@
     "common_species": "dtcobblemon:blue_apricorn",
     "primitive_log": "cobblemon:apricorn_log",
     "primitive_stripped_log": "cobblemon:stripped_apricorn_log",
-    "max_branch_radius": 3,
+    "max_branch_radius": 8,
     "texture_overrides": {
         "branch": "cobblemon:block/wood/apricorn_log",
         "branch_top": "cobblemon:block/wood/apricorn_log_top",

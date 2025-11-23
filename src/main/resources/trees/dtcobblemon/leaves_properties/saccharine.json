@@ -1,0 +1,8 @@
+{
+  "primitive_leaves": "cobblemon:saccharine_leaves",
+  "smother": 6,
+  "cell_kit": "dynamictrees:conifer",
+  "texture_overrides": {
+    "leaves": "cobblemon:block/wood/saccharine_leaves"
+  }
+}

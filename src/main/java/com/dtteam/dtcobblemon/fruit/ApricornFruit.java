@@ -9,7 +9,7 @@ import com.dtteam.dynamictrees.data.provider.DTBlockStateProvider;
 import net.minecraft.resources.ResourceLocation;
 
 public class ApricornFruit extends Fruit {
-    public static final TypedRegistry.EntryType<Fruit> TYPE =TypedRegistry.newType(ApricornFruit::new);;
+    public static final TypedRegistry.EntryType<Fruit> TYPE =TypedRegistry.newType(ApricornFruit::new);
     protected final MutableLazyValue<Generator<DTBlockStateProvider, Fruit>> fruitGenerator =
             MutableLazyValue.supplied(ApricornFruitStateGenerator::new);
 

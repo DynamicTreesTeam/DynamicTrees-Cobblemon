@@ -7,6 +7,7 @@ import com.dtteam.dynamictrees.registry.NeoForgeRegistryHandler;
 import com.dtteam.dynamictrees.tree.family.Family;
 import com.dtteam.dynamictrees.tree.species.Species;
 import com.dtteam.dynamictrees.treepack.Resources;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -16,6 +17,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 public class DynamicTreesCobblemon {
 
     public static final String MOD_ID = "dtcobblemon";
+    public static boolean DisableCobblemonTrees = true;
 
     public DynamicTreesCobblemon(IEventBus bus, ModContainer modContainer) {
         bus.addListener(this::gatherData);
@@ -32,6 +34,10 @@ public class DynamicTreesCobblemon {
                 LeavesProperties.REGISTRY,
                 Fruit.REGISTRY
         );
+    }
+
+    public static ResourceLocation Location (String path){
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
 }

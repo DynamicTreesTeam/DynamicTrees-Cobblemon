@@ -1,6 +1,0 @@
-{
-  "parent": "dtcobblemon:block/apricorn_stage_3",
-  "textures": {
-    "apricorn": "gravelmon:block/orange_apricorn"
-  }
-}
