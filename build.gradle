@@ -161,7 +161,7 @@ publishing {
     }
 }
 
-def changelogFile = file("build/changelog.txt")
+def changelogFile = file("changelog.md")
 
 publishMods {
     file = jar.archiveFile
