@@ -70,9 +70,6 @@ public class SaccharineSlatheredInfluence {
                     if (radius > 0)
                         branch.getFamily().getBranch().ifPresent(b -> b.setRadius(level, logPos, radius, Direction.DOWN));
                 }
-//                else {
-//                    level.setBlock(logPos, Blocks.GOLD_BLOCK.defaultBlockState(), 3);
-//                }
             }
             dynamicTrees_Cobblemon_1_21_1$activated = true;
         }

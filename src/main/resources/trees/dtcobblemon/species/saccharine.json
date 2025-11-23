@@ -2,7 +2,7 @@
   "type": "dtcobblemon:saccharine",
   "family": "dtcobblemon:saccharine",
   "tapering": 0.5,
-  "signal_energy": 14.0,
+  "signal_energy": 12.0,
   "up_probability": 3,
   "lowest_branch_height": 3,
   "growth_rate": 0.8,

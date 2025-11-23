@@ -16,6 +16,6 @@ public class SaccharineLeavesProperties extends LeavesProperties {
 
     @Override @NotNull
     protected DynamicLeavesBlock createDynamicLeaves(BlockBehaviour.Properties properties) {
-        return new SaccharineLeavesBlock(this, properties);
+        return new DynamicSaccharineLeavesBlock(this, properties);
     }
 }
