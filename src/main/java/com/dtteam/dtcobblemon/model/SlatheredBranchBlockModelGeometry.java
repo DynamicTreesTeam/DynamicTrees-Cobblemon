@@ -19,6 +19,7 @@ import net.neoforged.neoforge.client.model.geometry.IUnbakedGeometry;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 
@@ -35,18 +36,18 @@ import java.util.function.Function;
 public class SlatheredBranchBlockModelGeometry implements IUnbakedGeometry<SlatheredBranchBlockModelGeometry> {
     protected final Set<ResourceLocation> textures = new HashSet<>();
     protected final ResourceLocation barkTextureLocation;
-    protected final ResourceLocation slatheredTextureLocation;
+    protected final List<ResourceLocation> slatheredTextureLocations;
     protected final ResourceLocation ringsTextureLocation;
 
-    public SlatheredBranchBlockModelGeometry(@Nullable final ResourceLocation barkTextureLocation, @Nullable final ResourceLocation ringsTextureLocation, @Nullable final ResourceLocation slatheredTextureLocation) {
+    public SlatheredBranchBlockModelGeometry(@Nullable final ResourceLocation barkTextureLocation, @Nullable final ResourceLocation ringsTextureLocation, @Nullable final List<ResourceLocation> slatheredTextureLocations) {
         this.barkTextureLocation = barkTextureLocation;
         this.ringsTextureLocation = ringsTextureLocation;
-        this.slatheredTextureLocation = slatheredTextureLocation;
+        this.slatheredTextureLocations = slatheredTextureLocations;
     }
 
     @Override
     public BakedModel bake(IGeometryBakingContext context, ModelBaker modelBaker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides itemOverrides) {
-        return new SlatheredBranchBlockBakedModel(context, this.barkTextureLocation, this.ringsTextureLocation, this.slatheredTextureLocation, spriteGetter);
+        return new SlatheredBranchBlockBakedModel(context, this.barkTextureLocation, this.ringsTextureLocation, this.slatheredTextureLocations, spriteGetter);
     }
 
 }

@@ -2,7 +2,14 @@
   "loader": "dtcobblemon:slathered_branch",
   "textures": {
     "bark": "cobblemon:block/wood/saccharine_log",
-    "rings": "cobblemon:block/wood/saccharine_log_top",
-    "slathered": "cobblemon:block/wood/saccharine_log_slathered_0"
-  }
+    "rings": "cobblemon:block/wood/saccharine_log_top"
+  },
+  "slathered_textures": [
+    "cobblemon:block/wood/saccharine_log_slathered_0",
+    "cobblemon:block/wood/saccharine_log_slathered_1",
+    "cobblemon:block/wood/saccharine_log_slathered_2",
+    "cobblemon:block/wood/saccharine_log_slathered_3",
+    "cobblemon:block/wood/saccharine_log_slathered_4",
+    "cobblemon:block/wood/saccharine_log_slathered_5"
+  ]
 }

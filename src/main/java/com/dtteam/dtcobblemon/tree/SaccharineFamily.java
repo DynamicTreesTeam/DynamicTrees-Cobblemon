@@ -69,9 +69,14 @@ public class SaccharineFamily extends Family {
         return branch;
     }
 
+    @Override
+    public Family setPrimitiveLog(Block primitiveLog) {
+        slatheredBranch.get().setPrimitiveLogDrops(new ItemStack(primitiveLog));
+        return super.setPrimitiveLog(primitiveLog);
+    }
+
     public void setPrimitiveSlatheredLog(Block primitiveLog) {
         this.primitiveSlatheredLog = primitiveLog;
-        slatheredBranch.get().setPrimitiveLogDrops(new ItemStack(primitiveLog));
     }
 
     public Optional<BranchBlock> getSlatheredBranch() {

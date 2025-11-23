@@ -42,23 +42,27 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
     protected final BlockModel blockModel;
 
     protected final TextureAtlasSprite barkTexture;
-    protected final TextureAtlasSprite slatheredBarkTexture;
+    protected final List<TextureAtlasSprite> slatheredBarkTextures = new LinkedList<>();
     protected final TextureAtlasSprite ringsTexture;
 
     protected final BakedModel[][] sleeves = new BakedModel[6][7];
     protected final BakedModel[][] cores = new BakedModel[3][8];
     protected final BakedModel[] rings = new BakedModel[8];
-    protected final BakedModel[][] sleeves_slathered = new BakedModel[6][7];
-    protected final BakedModel[][] cores_slathered = new BakedModel[3][8];
+    protected final List<BakedModel[][]> sleeves_slathered = new LinkedList<>();
+    protected final List<BakedModel[][]> cores_slathered = new LinkedList<>();
 
-    public SlatheredBranchBlockBakedModel(IGeometryBakingContext customData, ResourceLocation barkTextureLocation, ResourceLocation ringsTextureLocation, ResourceLocation slatheredTextureLocation,
+    public SlatheredBranchBlockBakedModel(IGeometryBakingContext customData, ResourceLocation barkTextureLocation, ResourceLocation ringsTextureLocation, List<ResourceLocation> slatheredTextureLocations,
                                           Function<Material, TextureAtlasSprite> spriteGetter) {
         this.blockModel = new BlockModel(null, new ArrayList<>(), new HashMap<>(), false, BlockModel.GuiLight.FRONT,
                 ItemTransforms.NO_TRANSFORMS, new ArrayList<>());
         if (customData.getRenderTypeHint() != null)
             this.blockModel.customData.setRenderTypeHint(customData.getRenderTypeHint());
         this.barkTexture = spriteGetter.apply(new Material(InventoryMenu.BLOCK_ATLAS, barkTextureLocation));
-        this.slatheredBarkTexture = spriteGetter.apply(new Material(InventoryMenu.BLOCK_ATLAS, slatheredTextureLocation));
+        slatheredTextureLocations.forEach(slatheredTextureLocation -> {
+            this.slatheredBarkTextures.add(spriteGetter.apply(new Material(InventoryMenu.BLOCK_ATLAS, slatheredTextureLocation)));
+            sleeves_slathered.add(new BakedModel[6][7]);
+            cores_slathered.add(new BakedModel[3][8]);
+        });
         this.ringsTexture = spriteGetter.apply(new Material(InventoryMenu.BLOCK_ATLAS, ringsTextureLocation));
         initModels();
     }
@@ -69,15 +73,19 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
             if (radius < 8) {
                 for (Direction dir : Direction.values()) {
                     sleeves[dir.get3DDataValue()][i] = bakeSleeve(radius, dir, barkTexture);
-                    sleeves_slathered[dir.get3DDataValue()][i] = bakeSleeve(radius, dir, slatheredBarkTexture);
+                    for (int s=0; s<slatheredBarkTextures.size(); s++){
+                        sleeves_slathered.get(s)[dir.get3DDataValue()][i] = bakeSleeve(radius, dir, slatheredBarkTextures.get(s));
+                    }
                 }
             }
             cores[0][i] = bakeCore(radius, Axis.Y, barkTexture); //DOWN<->UP
             cores[1][i] = bakeCore(radius, Axis.Z, barkTexture); //NORTH<->SOUTH
             cores[2][i] = bakeCore(radius, Axis.X, barkTexture); //WEST<->EAST
-            cores_slathered[0][i] = bakeCore(radius, Axis.Y, slatheredBarkTexture); //DOWN<->UP
-            cores_slathered[1][i] = bakeCore(radius, Axis.Z, slatheredBarkTexture); //NORTH<->SOUTH
-            cores_slathered[2][i] = bakeCore(radius, Axis.X, slatheredBarkTexture); //WEST<->EAST
+            for (int s=0; s<slatheredBarkTextures.size(); s++){
+                cores_slathered.get(s)[0][i] = bakeCore(radius, Axis.Y, slatheredBarkTextures.get(s)); //DOWN<->UP
+                cores_slathered.get(s)[1][i] = bakeCore(radius, Axis.Z, slatheredBarkTextures.get(s)); //NORTH<->SOUTH
+                cores_slathered.get(s)[2][i] = bakeCore(radius, Axis.X, slatheredBarkTextures.get(s)); //WEST<->EAST
+            }
 
             rings[i] = bakeCore(radius, Axis.Y, ringsTexture);
         }
@@ -202,6 +210,7 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
             return Collections.emptyList();
         }
         final Direction facingDir = state.getValue(HorizontalDirectionalBlock.FACING);
+        final int randomTexture = rand.nextInt(slatheredBarkTextures.size());
 
         final List<BakedQuad> quadsList = new ArrayList<>(24);
 
@@ -245,7 +254,7 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
                 if (coreRadius != connections[face.get3DDataValue()]) {
                     if ((coreRingDir == null || coreRingDir != face)) {
                         if (facingDir == face)
-                            quadsList.addAll(cores_slathered[coreDir][coreRadius - 1].getQuads(state, face, rand, extraData, renderType));
+                            quadsList.addAll(cores_slathered.get(randomTexture)[coreDir][coreRadius - 1].getQuads(state, face, rand, extraData, renderType));
                         else
                             quadsList.addAll(cores[coreDir][coreRadius - 1].getQuads(state, face, rand, extraData, renderType));
                     } else {
@@ -260,7 +269,7 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
                         // If the connection side matches the quadpull side then cull the sleeve face.  Don't cull radius-1 connections for leaves (which are partly transparent).
                         if (connRadius > 0 && (connRadius == twigRadius.get() || face != connDir)) {
                             if (facingDir == face)
-                                quadsList.addAll(sleeves_slathered[idx][connRadius - 1].getQuads(state, face, rand, extraData, renderType));
+                                quadsList.addAll(sleeves_slathered.get(randomTexture)[idx][connRadius - 1].getQuads(state, face, rand, extraData, renderType));
                             else
                                 quadsList.addAll(sleeves[idx][connRadius - 1].getQuads(state, face, rand, extraData, renderType));
                         }
