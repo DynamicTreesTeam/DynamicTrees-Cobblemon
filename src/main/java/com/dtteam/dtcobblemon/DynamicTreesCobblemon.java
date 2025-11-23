@@ -1,5 +1,6 @@
 package com.dtteam.dtcobblemon;
 
+import com.dtteam.dtcobblemon.init.DTCobblemonPoiTypes;
 import com.dtteam.dynamictrees.block.fruit.Fruit;
 import com.dtteam.dynamictrees.block.leaves.LeavesProperties;
 import com.dtteam.dynamictrees.data.GatherDataHelper;
@@ -11,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 @Mod(DynamicTreesCobblemon.MOD_ID)
@@ -21,9 +23,14 @@ public class DynamicTreesCobblemon {
 
     public DynamicTreesCobblemon(IEventBus bus, ModContainer modContainer) {
         bus.addListener(this::gatherData);
+        bus.addListener(this::commonSetup);
 
         NeoForgeRegistryHandler.setup(MOD_ID, bus);
+
+        DTCobblemonPoiTypes.register(bus);
     }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {}
 
     private void gatherData(final GatherDataEvent event) {
         Resources.MANAGER.gatherData();

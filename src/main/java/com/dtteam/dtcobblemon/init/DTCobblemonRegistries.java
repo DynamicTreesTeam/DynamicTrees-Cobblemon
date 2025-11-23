@@ -1,32 +1,31 @@
-package com.dtteam.dtcobblemon;
+package com.dtteam.dtcobblemon.init;
 
+import com.dtteam.dtcobblemon.DynamicTreesCobblemon;
 import com.dtteam.dtcobblemon.fruit.ApricornFruit;
+import com.dtteam.dtcobblemon.leaves.SaccharineLeavesProperties;
 import com.dtteam.dtcobblemon.tree.SaccharineFamily;
 import com.dtteam.dtcobblemon.tree.SaccharineSpecies;
-import com.dtteam.dynamictrees.api.registry.Registry;
 import com.dtteam.dynamictrees.block.fruit.Fruit;
-import com.dtteam.dynamictrees.data.tags.DTBiomeTags;
-import com.dtteam.dynamictrees.event.ApplierRegistryEvent;
+import com.dtteam.dynamictrees.block.leaves.LeavesProperties;
 import com.dtteam.dynamictrees.event.RegistryEvent;
 import com.dtteam.dynamictrees.event.TypeRegistryEvent;
 import com.dtteam.dynamictrees.systems.genfeature.BeeNestGenFeature;
 import com.dtteam.dynamictrees.systems.genfeature.GenFeature;
 import com.dtteam.dynamictrees.systems.genfeature.GenFeatureConfiguration;
-import com.dtteam.dynamictrees.systems.genfeature.GenFeatures;
 import com.dtteam.dynamictrees.tree.family.Family;
 import com.dtteam.dynamictrees.tree.species.Species;
-import com.google.gson.JsonElement;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import org.jetbrains.annotations.NotNull;
-
-import static com.dtteam.dynamictrees.systems.genfeature.BeeNestGenFeature.WORLD_GEN_CHANCE_FUNCTION;
-import static com.dtteam.dynamictrees.systems.genfeature.GenFeature.CAN_GROW_PREDICATE;
 
 @EventBusSubscriber(modid = DynamicTreesCobblemon.MOD_ID)
 public class DTCobblemonRegistries {
@@ -49,6 +48,13 @@ public class DTCobblemonRegistries {
     public static void registerFamilyTypes(TypeRegistryEvent<Family> event) {
         if (event.isEntryOfType(Family.class)){
             event.registerType(DynamicTreesCobblemon.Location("saccharine"), SaccharineFamily.TYPE);
+        }
+    }
+
+    @SubscribeEvent
+    public static void registerLeavesPropertiesTypes(TypeRegistryEvent<LeavesProperties> event) {
+        if (event.isEntryOfType(LeavesProperties.class)){
+            event.registerType(DynamicTreesCobblemon.Location("saccharine"), SaccharineLeavesProperties.TYPE);
         }
     }
 

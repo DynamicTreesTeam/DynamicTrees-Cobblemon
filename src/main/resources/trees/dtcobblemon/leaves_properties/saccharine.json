@@ -1,4 +1,5 @@
 {
+  "type": "dtcobblemon:saccharine",
   "primitive_leaves": "cobblemon:saccharine_leaves",
   "smother": 6,
   "cell_kit": "dynamictrees:conifer",
