@@ -19,6 +19,7 @@
   "acceptable_soils": ["dirt_like"],
   "world_gen_acceptable_soils": ["snow_like"],
   "features" : [
+    "dtcobblemon:saccharine_bee_nest"
   ],
   "lang_overrides": {
     "seed": "Saccharine Cone"
