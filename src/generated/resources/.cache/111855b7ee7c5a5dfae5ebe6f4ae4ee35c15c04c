@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-23T00:53:41.1505199	Block States: dtcobblemon
+// 1.21.1	2025-11-23T01:22:50.135839	Block States: dtcobblemon
 4ff603f6a4a02a8f91b6eaf69b8d444b7c7fa99c assets/dtcobblemon/blockstates/apricorn_branch.json
 ffc055d3555acc7f531e0940294f5ae7d96e5013 assets/dtcobblemon/blockstates/apricorn_leaves.json
 493688359af21cdaad31ea933be18263a9c5bdd7 assets/dtcobblemon/blockstates/black_apricorn.json
@@ -36,7 +36,7 @@ b311ee2d5a4f46848e463fb7068bbc7aeef28f6f assets/dtcobblemon/models/block/sapling
 e087f4594ad7e6f87832a3dca3397767084f8d84 assets/dtcobblemon/models/block/saplings/saccharine.json
 b311ee2d5a4f46848e463fb7068bbc7aeef28f6f assets/dtcobblemon/models/block/saplings/white_apricorn.json
 b311ee2d5a4f46848e463fb7068bbc7aeef28f6f assets/dtcobblemon/models/block/saplings/yellow_apricorn.json
-04e2e48935c5946d7e6ec92d296ec8550c499e98 assets/dtcobblemon/models/block/slathered_saccharine_branch.json
+bb4619e53018615ebee1091422c00378fb397f4d assets/dtcobblemon/models/block/slathered_saccharine_branch.json
 4e4fdf9c820242bd66bb90c12c4c476513768eb6 assets/dtcobblemon/models/block/stripped_apricorn_branch.json
 2b793cd86fd96dd285866f8f7b324bba52340c9f assets/dtcobblemon/models/block/stripped_saccharine_branch.json
 98b815f3efa11b94f43f5aba5eb61e2a6be69e91 assets/dtcobblemon/models/block/white_apricorn.json

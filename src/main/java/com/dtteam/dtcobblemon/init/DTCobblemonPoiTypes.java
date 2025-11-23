@@ -18,7 +18,7 @@ public class DTCobblemonPoiTypes {
     public static DeferredHolder<PoiType, PoiType> SACCHARINE_BRANCH_SLATHERED;
 
     public static void register(IEventBus bus) {
-        Family.REGISTRY.runOnNextLock(Family.REGISTRY.generateIfValidRunnable(DynamicTreesCobblemon.Location("saccharine"), saccharine -> {
+        Family.REGISTRY.runOnNextLock(Family.REGISTRY.generateIfValidRunnable(DynamicTreesCobblemon.location("saccharine"), saccharine -> {
             if (saccharine.isValid()){
                 SACCHARINE_BRANCH_SLATHERED = POIs_REGISTRY.register("saccharine_branch_slathered", () ->
                         new PoiType(ImmutableSet.copyOf(saccharine.getBranch().get().getStateDefinition().getPossibleStates()), 0, 1)

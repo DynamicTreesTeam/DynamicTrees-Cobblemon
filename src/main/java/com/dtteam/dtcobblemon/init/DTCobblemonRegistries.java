@@ -27,35 +27,35 @@ public class DTCobblemonRegistries {
     @SubscribeEvent
     public static void registerFruitTypes(TypeRegistryEvent<Fruit> event) {
         if (event.isEntryOfType(Fruit.class)){
-            event.registerType(DynamicTreesCobblemon.Location("apricorn"), ApricornFruit.TYPE);
+            event.registerType(DynamicTreesCobblemon.location("apricorn"), ApricornFruit.TYPE);
         }
     }
 
     @SubscribeEvent
     public static void registerSpeciesTypes(TypeRegistryEvent<Species> event) {
         if (event.isEntryOfType(Species.class)){
-            event.registerType(DynamicTreesCobblemon.Location("saccharine"), SaccharineSpecies.TYPE);
+            event.registerType(DynamicTreesCobblemon.location("saccharine"), SaccharineSpecies.TYPE);
         }
     }
 
     @SubscribeEvent
     public static void registerFamilyTypes(TypeRegistryEvent<Family> event) {
         if (event.isEntryOfType(Family.class)){
-            event.registerType(DynamicTreesCobblemon.Location("saccharine"), SaccharineFamily.TYPE);
+            event.registerType(DynamicTreesCobblemon.location("saccharine"), SaccharineFamily.TYPE);
         }
     }
 
     @SubscribeEvent
     public static void registerLeavesPropertiesTypes(TypeRegistryEvent<LeavesProperties> event) {
         if (event.isEntryOfType(LeavesProperties.class)){
-            event.registerType(DynamicTreesCobblemon.Location("saccharine"), SaccharineLeavesProperties.TYPE);
+            event.registerType(DynamicTreesCobblemon.location("saccharine"), SaccharineLeavesProperties.TYPE);
         }
     }
 
     @SubscribeEvent
     public static void onGenFeatureRegistry(final RegistryEvent<GenFeature> event) {
         if (!event.isEntryOfType(GenFeature.class)) return;
-        event.getRegistry().register(new BeeNestGenFeature(DynamicTreesCobblemon.Location("saccharine_bee_nest")){
+        event.getRegistry().register(new BeeNestGenFeature(DynamicTreesCobblemon.location("saccharine_bee_nest")){
             @Override @NotNull
             public GenFeatureConfiguration createDefaultConfiguration() {
                 return super.createDefaultConfiguration()
