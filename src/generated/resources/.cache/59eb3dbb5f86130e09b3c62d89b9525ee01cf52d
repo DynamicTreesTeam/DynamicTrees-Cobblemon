@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-22T20:42:35.9677912	Loot Tables
+// 1.21.1	2025-11-23T00:47:06.7311741	Loot Tables
 7f58bb5ebd83a08a0a063c3065f25acd497f949c data/dtcobblemon/loot_table/blocks/apricorn_leaves.json
 634be1ef52945554571bdd16baea4b578a3daa60 data/dtcobblemon/loot_table/blocks/black_apricorn.json
 9247849ff64d04d4317f6c8463ea39790a49460d data/dtcobblemon/loot_table/blocks/blue_apricorn.json
@@ -10,6 +10,7 @@ b0223e725a53ac140ce15f6c9830c390f5ea3d2c data/dtcobblemon/loot_table/blocks/whit
 fe98bf716a4a3b44080512b87437677960b1361c data/dtcobblemon/loot_table/blocks/yellow_apricorn.json
 df48eb7898316ff90d3cdb7f43a27f097fd25ebe data/dtcobblemon/loot_table/trees/branches/apricorn.json
 1e0113c8097df917dd207840dd8c936d0e8649ce data/dtcobblemon/loot_table/trees/branches/saccharine.json
+788045806f29a63463565762597c896e5f6c2009 data/dtcobblemon/loot_table/trees/branches/slathered_saccharine.json
 5cd29cff74822d9e00a306003bcc614a8f855909 data/dtcobblemon/loot_table/trees/branches/stripped_apricorn.json
 dfe35c9893ed90906e9b7dec1c0c4d1f88a09620 data/dtcobblemon/loot_table/trees/branches/stripped_saccharine.json
 31953c87f9c08382b6f8d041017d7d259e75e098 data/dtcobblemon/loot_table/trees/leaves/apricorn.json

@@ -1,9 +1,6 @@
 package com.dtteam.dtcobblemon.mixin;
 
-import com.cobblemon.mod.common.CobblemonBlocks;
-import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.spawning.detail.SpawnAction;
-import com.cobblemon.mod.common.api.spawning.fishing.FishingSpawnCause;
 import com.cobblemon.mod.common.api.spawning.influence.SaccharineLogSlatheredInfluence;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.net.messages.client.effect.SaccharineLogBlockParticlesPacket;
@@ -15,9 +12,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Final;

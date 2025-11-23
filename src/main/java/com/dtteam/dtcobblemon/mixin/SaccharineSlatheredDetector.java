@@ -1,6 +1,5 @@
 package com.dtteam.dtcobblemon.mixin;
 
-import com.cobblemon.mod.common.CobblemonPoiTypes;
 import com.cobblemon.mod.common.api.spawning.influence.SaccharineLogSlatheredInfluence;
 import com.cobblemon.mod.common.api.spawning.influence.SpatialSpawningZoneInfluence;
 import com.cobblemon.mod.common.api.spawning.influence.SpawningZoneInfluence;
@@ -11,7 +10,6 @@ import com.dtteam.dtcobblemon.init.DTCobblemonPoiTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -19,7 +17,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Mixin(SaccharineLogSlatheredDetector.class)
@@ -40,11 +37,7 @@ public class SaccharineSlatheredDetector {
 
         List<BlockPos> honeyLogPositions = world.getPoiManager()
                 .findAll(holder -> holder.is(DTCobblemonPoiTypes.SACCHARINE_BRANCH_SLATHERED.getKey()),
-                        pos -> true,
-                        centerPos,
-                        searchRange,
-                        PoiManager.Occupancy.ANY
-                ).toList();
+                        pos -> true, centerPos, searchRange, PoiManager.Occupancy.ANY).toList();
 
         for (BlockPos pos : honeyLogPositions) {
             listOfInfluences.add(new SpatialSpawningZoneInfluence(pos, (float) RANGE, new SaccharineLogSlatheredInfluence(pos)));

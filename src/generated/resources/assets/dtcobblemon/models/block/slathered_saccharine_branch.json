@@ -1,0 +1,7 @@
+{
+  "loader": "dynamictrees:branch",
+  "textures": {
+    "bark": "cobblemon:block/wood/saccharine_log_slathered_0",
+    "rings": "cobblemon:block/wood/saccharine_log_top"
+  }
+}

@@ -18,6 +18,9 @@ group = mod_group_id
 
 repositories {
     maven {
+        url "https://maven.minecraftforge.net"
+    }
+    maven {
         name "DynamicTrees maven"
         url "https://harleyoconnor.com/maven"
     }
@@ -115,6 +118,7 @@ dependencies {
     runtimeOnly "cc.tweaked:cc-tweaked-${minecraft_version}-forge:${cc_version}"
 
     // Addon
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:2.0.10"
     implementation "curse.maven:kotlin-for-forge-351264:5521840"
     implementation "curse.maven:cobblemon-687131:${cobblemon_file}"
 }

@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-22T22:01:38.1630763	Block States: dtcobblemon
+// 1.21.1	2025-11-23T00:53:41.1505199	Block States: dtcobblemon
 4ff603f6a4a02a8f91b6eaf69b8d444b7c7fa99c assets/dtcobblemon/blockstates/apricorn_branch.json
 ffc055d3555acc7f531e0940294f5ae7d96e5013 assets/dtcobblemon/blockstates/apricorn_leaves.json
 493688359af21cdaad31ea933be18263a9c5bdd7 assets/dtcobblemon/blockstates/black_apricorn.json
@@ -14,6 +14,7 @@ ab3d72c585f869bb6707635f2b392e31e521a7b8 assets/dtcobblemon/blockstates/pink_apr
 cbd13c063bd86661e39c0d1c422b04c96dc5a81c assets/dtcobblemon/blockstates/saccharine_branch.json
 31595722e62143a9c90f612e3b5bab1eb864a9b6 assets/dtcobblemon/blockstates/saccharine_leaves.json
 5171d3e43fa0d2cb523312c058515e07894ffff5 assets/dtcobblemon/blockstates/saccharine_sapling.json
+334b930ff0e912849f10b9472e635e16b11e6ab4 assets/dtcobblemon/blockstates/slathered_saccharine_branch.json
 92691380f00bb0593dea92e683a052ff5cbdcf12 assets/dtcobblemon/blockstates/stripped_apricorn_branch.json
 afde718b29f1aa2da778198e10dd6f541bc2df79 assets/dtcobblemon/blockstates/stripped_saccharine_branch.json
 ae1baa68d7217bb97f11110a95b06ac6d9a835d9 assets/dtcobblemon/blockstates/white_apricorn.json
@@ -35,6 +36,7 @@ b311ee2d5a4f46848e463fb7068bbc7aeef28f6f assets/dtcobblemon/models/block/sapling
 e087f4594ad7e6f87832a3dca3397767084f8d84 assets/dtcobblemon/models/block/saplings/saccharine.json
 b311ee2d5a4f46848e463fb7068bbc7aeef28f6f assets/dtcobblemon/models/block/saplings/white_apricorn.json
 b311ee2d5a4f46848e463fb7068bbc7aeef28f6f assets/dtcobblemon/models/block/saplings/yellow_apricorn.json
+04e2e48935c5946d7e6ec92d296ec8550c499e98 assets/dtcobblemon/models/block/slathered_saccharine_branch.json
 4e4fdf9c820242bd66bb90c12c4c476513768eb6 assets/dtcobblemon/models/block/stripped_apricorn_branch.json
 2b793cd86fd96dd285866f8f7b324bba52340c9f assets/dtcobblemon/models/block/stripped_saccharine_branch.json
 98b815f3efa11b94f43f5aba5eb61e2a6be69e91 assets/dtcobblemon/models/block/white_apricorn.json
