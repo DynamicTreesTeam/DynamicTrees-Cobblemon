@@ -8,7 +8,7 @@
     "texture_overrides": {
         "branch": "cobblemon:block/wood/saccharine_log",
         "branch_top": "cobblemon:block/wood/saccharine_log_top",
-        "stripped_branch": "cobblemon:block/wood/saccharine_stripped_log",
-        "stripped_branch_top": "cobblemon:block/wood/saccharine_stripped_log_top"
+        "stripped_branch": "cobblemon:block/wood/stripped_saccharine_log",
+        "stripped_branch_top": "cobblemon:block/wood/stripped_saccharine_log_top"
     }
 }

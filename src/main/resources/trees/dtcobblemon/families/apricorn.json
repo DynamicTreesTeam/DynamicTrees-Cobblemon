@@ -7,7 +7,7 @@
     "texture_overrides": {
         "branch": "cobblemon:block/wood/apricorn_log",
         "branch_top": "cobblemon:block/wood/apricorn_log_top",
-        "stripped_branch": "cobblemon:block/wood/apricorn_stripped_log",
-        "stripped_branch_top": "cobblemon:block/wood/apricorn_stripped_log_top"
+        "stripped_branch": "cobblemon:block/wood/stripped_apricorn_log",
+        "stripped_branch_top": "cobblemon:block/wood/stripped_apricorn_log_top"
     }
 }
