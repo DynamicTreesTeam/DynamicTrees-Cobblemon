@@ -18,7 +18,9 @@ import com.dtteam.dynamictrees.tree.family.Family;
 import com.dtteam.dynamictrees.utility.Optionals;
 import com.dtteam.dynamictrees.utility.ResourceLocationUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
@@ -26,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class SaccharineFamily extends Family {
@@ -140,5 +143,21 @@ public class SaccharineFamily extends Family {
                 return (new Dependencies()).append(BRANCH, castedInput.getSlatheredBranch()).append(PRIMITIVE_SLATHERED_LOG, castedInput.getPrimitiveSlatheredLog()).append(PRIMITIVE_LOG, castedInput.getPrimitiveLog());
             return super.gatherDependencies(input);
         }
+    }
+
+    @Override
+    public void addGeneratedBlockTags(Function<TagKey<Block>, IntrinsicHolderTagsProvider.IntrinsicTagAppender<Block>> tagAppender) {
+        this.getSlatheredBranch().ifPresent((branch) -> {
+            this.tierTag(this.getDefaultBranchHarvestTier(), tagAppender).ifPresent((tagBuilder) -> tagBuilder.add(branch));
+            this.defaultBranchTags().forEach((tag) -> {
+                if (!this.isOnlyIfLoaded()) {
+                    tagAppender.apply(tag).add(branch);
+                } else {
+                    tagAppender.apply(tag).addOptional(BuiltInRegistries.BLOCK.getKey(branch));
+                }
+
+            });
+        });
+        super.addGeneratedBlockTags(tagAppender);
     }
 }
