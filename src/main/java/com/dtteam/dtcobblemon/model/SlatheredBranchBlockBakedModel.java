@@ -1,5 +1,6 @@
 package com.dtteam.dtcobblemon.model;
 
+import com.dtteam.dtcobblemon.branch.SlatheredSaccharineBranchBlock;
 import com.dtteam.dynamictrees.block.branch.BranchBlock;
 import com.dtteam.dynamictrees.model.ModelHelper;
 import com.dtteam.dynamictrees.model.modeldata.ModelConnections;
@@ -18,7 +19,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -206,10 +206,10 @@ public class SlatheredBranchBlockBakedModel implements IDynamicBakedModel {
     @NotNull
     @Override
     public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @NotNull RandomSource rand, @NotNull ModelData extraData, @Nullable RenderType renderType) {
-        if (state == null || side != null || !state.hasProperty(HorizontalDirectionalBlock.FACING)) {
+        if (state == null || side != null || !state.hasProperty(SlatheredSaccharineBranchBlock.FACING)) {
             return Collections.emptyList();
         }
-        final Direction facingDir = state.getValue(HorizontalDirectionalBlock.FACING);
+        final Direction facingDir = state.getValue(SlatheredSaccharineBranchBlock.FACING);
         final int randomTexture = rand.nextInt(slatheredBarkTextures.size());
 
         final List<BakedQuad> quadsList = new ArrayList<>(24);

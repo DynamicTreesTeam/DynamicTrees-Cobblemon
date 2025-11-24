@@ -34,6 +34,7 @@ import java.util.function.Supplier;
 public class SaccharineFamily extends Family {
     public static final TypedRegistry.EntryType<Family> TYPE = TypedRegistry.newType(SaccharineFamily::new);
 
+    protected int minimumRadiusForSlathering = 5;
     protected Supplier<BranchBlock> slatheredBranch;
     protected Block primitiveSlatheredLog;
     protected final MutableLazyValue<SlatheredBranchStateGenerator> slatheredBranchStateGenerator;
@@ -88,6 +89,14 @@ public class SaccharineFamily extends Family {
 
     public Optional<Block> getPrimitiveSlatheredLog() {
         return Optionals.ofBlock(primitiveSlatheredLog);
+    }
+
+    public int getMinimumRadiusForSlathering() {
+        return minimumRadiusForSlathering;
+    }
+
+    public void setMinimumRadiusForSlathering(int minimumRadiusForSlathering) {
+        this.minimumRadiusForSlathering = minimumRadiusForSlathering;
     }
 
     @Override

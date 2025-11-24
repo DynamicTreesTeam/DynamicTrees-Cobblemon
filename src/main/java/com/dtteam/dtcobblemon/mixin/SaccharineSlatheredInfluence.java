@@ -49,7 +49,7 @@ public class SaccharineSlatheredInfluence {
 
                 if (blockState.getBlock() instanceof SlatheredSaccharineBranchBlock branch) {
 
-                    Direction direction = blockState.getValue(HorizontalDirectionalBlock.FACING);
+                    Direction direction = blockState.getValue(SlatheredSaccharineBranchBlock.FACING);
                     BlockPos safePos = attemptSafeMove(level, pokemonEntity, logPos, direction);
 
                     if (safePos != null) {

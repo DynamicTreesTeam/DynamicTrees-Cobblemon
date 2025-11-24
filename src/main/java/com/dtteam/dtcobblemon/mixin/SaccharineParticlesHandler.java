@@ -10,7 +10,6 @@ import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -26,7 +25,7 @@ public class SaccharineParticlesHandler {
         BlockState blockState = level.getBlockState(packet.getBlockPos());
         Block block = blockState.getBlock();
         if (block instanceof SlatheredSaccharineBranchBlock branch) {
-            Direction direction = blockState.getValue(HorizontalDirectionalBlock.FACING);
+            Direction direction = blockState.getValue(SlatheredSaccharineBranchBlock.FACING);
             branch.spawnParticlesAtBlockFace(
                     new BlockParticleOption(ParticleTypes.BLOCK, Blocks.HONEY_BLOCK.defaultBlockState()), level, packet.getBlockPos(), direction, 15);
             branch.spawnParticlesAtBlockFace(

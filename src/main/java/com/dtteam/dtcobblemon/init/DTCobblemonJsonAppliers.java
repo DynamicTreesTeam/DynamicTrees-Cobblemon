@@ -20,7 +20,9 @@ public class DTCobblemonJsonAppliers {
 
     public static void registerFamilyAppliers(PropertyAppliers<Family, JsonElement> appliers) {
         appliers.register("primitive_slathered_log", SaccharineFamily.class, Block.class,
-                SaccharineFamily::setPrimitiveSlatheredLog);
+                        SaccharineFamily::setPrimitiveSlatheredLog)
+                .register("minimum_radius_for_slathering", SaccharineFamily.class, Integer.class,
+                        SaccharineFamily::setMinimumRadiusForSlathering);
     }
 
     @SubscribeEvent public static void registerAppliersFamily(final ApplierRegistryEvent.GatherData<Family, JsonElement> event) { registerFamilyAppliers(event.getAppliers()); }
