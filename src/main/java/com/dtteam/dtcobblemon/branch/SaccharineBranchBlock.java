@@ -84,7 +84,7 @@ public class SaccharineBranchBlock extends BasicBranchBlock {
 
     @Override @NotNull
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        if (context instanceof EntityCollisionContext eContext && TreeHelper.getRadius(level, pos) < 8){
+        if (context instanceof EntityCollisionContext eContext && TreeHelper.getRadius(level, pos) < 5){
             Entity entity = eContext.getEntity();
             if (entity instanceof MoLangScriptingEntity moEntity && moEntity.getConfig().getMap().getOrDefault("can_path_through_sacc_leaves", DoubleValue.ZERO).asDouble() == 1.0){
                 return Shapes.empty();

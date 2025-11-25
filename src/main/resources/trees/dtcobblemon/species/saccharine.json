@@ -1,7 +1,6 @@
 {
-  "type": "dtcobblemon:saccharine",
   "family": "dtcobblemon:saccharine",
-  "tapering": 0.5,
+  "tapering": 0.4,
   "signal_energy": 12.0,
   "up_probability": 3,
   "lowest_branch_height": 3,
@@ -19,7 +18,14 @@
   "acceptable_soils": ["dirt_like"],
   "world_gen_acceptable_soils": ["snow_like"],
   "features" : [
-    "dtcobblemon:saccharine_bee_nest"
+    {
+      "name": "dtcobblemon:saccharine_bee_nest",
+      "properties": {
+        "combee_probability": 0.5,
+        "combee_min_level": 5,
+        "combee_max_level": 15
+      }
+    }
   ],
   "lang_overrides": {
     "seed": "Saccharine Cone"
