@@ -25,7 +25,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -106,25 +108,12 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return super.getShape(pState, pLevel, pPos, pContext);
+    public SoundType getSoundType(BlockState state, LevelReader level, BlockPos pos, @Nullable Entity entity) {
+        SoundType defaultType = super.getSoundType(state, level, pos, entity);
+        if (state.hasProperty(AGE) && state.getValue(AGE) > MIN_AGE)
+            return new SoundType(defaultType.volume, defaultType.pitch, defaultType.getBreakSound(), SoundEvents.HONEY_BLOCK_STEP, defaultType.getPlaceSound(), SoundEvents.HONEY_BLOCK_HIT, SoundEvents.HONEY_BLOCK_FALL);
+        return defaultType;
     }
-
-    @Override
-    protected VoxelShape getOcclusionShape(BlockState state, BlockGetter level, BlockPos pos) {
-        return super.getOcclusionShape(state, level, pos);
-    }
-
-    @Override
-    public VoxelShape getBlockSupportShape(BlockState pState, BlockGetter pReader, BlockPos pPos) {
-        return super.getBlockSupportShape(pState, pReader, pPos);
-    }
-
-
-
-
-
-
 
     @Override
     public boolean isRandomlyTicking(BlockState state) {
