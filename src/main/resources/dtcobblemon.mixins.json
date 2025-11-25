@@ -8,11 +8,12 @@
     "CobblemonTreeCancelerMixin",
     "OmniPathNavigationMixin",
     "PlaceHoneyInSacLeavesTaskConfigMixin",
-    "SaccharineParticlesHandlerMixin",
     "SaccharineSlatheredDetectorMixin",
     "SaccharineSlatheredInfluenceMixin",
     "SacLeavesSensorMixin"
   ],
-  "client": [],
+  "client": [
+    "SaccharineParticlesHandlerMixin"
+  ],
   "minVersion": "0.8.5"
 }
