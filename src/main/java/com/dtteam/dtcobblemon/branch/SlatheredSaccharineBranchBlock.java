@@ -1,5 +1,7 @@
 package com.dtteam.dtcobblemon.branch;
 
+import com.bedrockk.molang.runtime.value.DoubleValue;
+import com.cobblemon.mod.common.entity.MoLangScriptingEntity;
 import com.dtteam.dynamictrees.DynamicTrees;
 import com.dtteam.dynamictrees.block.branch.BasicBranchBlock;
 import com.dtteam.dynamictrees.tree.TreeHelper;
@@ -14,12 +16,14 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -31,6 +35,11 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.EntityCollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class SlatheredSaccharineBranchBlock extends BasicBranchBlock {
@@ -169,6 +178,17 @@ public class SlatheredSaccharineBranchBlock extends BasicBranchBlock {
 
             level.addParticle(particle, posX, posY, posZ, 0.0, 0.0, 0.0);
         }
+    }
+
+    @Override @NotNull
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        if (context instanceof EntityCollisionContext eContext && TreeHelper.getRadius(level, pos) < 8){
+            Entity entity = eContext.getEntity();
+            if (entity instanceof MoLangScriptingEntity moEntity && moEntity.getConfig().getMap().getOrDefault("can_path_through_sacc_leaves", DoubleValue.ZERO).asDouble() == 1.0){
+                return Shapes.empty();
+            }
+        }
+        return super.getCollisionShape(state, level, pos, context);
     }
 
 }

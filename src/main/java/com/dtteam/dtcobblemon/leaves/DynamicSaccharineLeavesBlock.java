@@ -82,16 +82,22 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
         return this.getLeavesBlockStateForPlacement(accessor, pos, newHydroState, oldHydro, worldGen);
     }
 
-
-    @Override @NotNull
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        if (context instanceof EntityCollisionContext eContext){
-            Entity entity = eContext.getEntity();
-            if (entity instanceof MoLangScriptingEntity moEntity && moEntity.getConfig().getMap().getOrDefault("can_path_through_sacc_leaves", DoubleValue.ZERO).asDouble() == 1.0){
-                return Shapes.empty();
-            }
+    @Override
+    public boolean isEntityPassable(@Nullable Entity entity) {
+        if (entity instanceof MoLangScriptingEntity moEntity && moEntity.getConfig().getMap().getOrDefault("can_path_through_sacc_leaves", DoubleValue.ZERO).asDouble() == 1.0){
+            return true;
         }
-        return super.getCollisionShape(state, level, pos, context);
+        return super.isEntityPassable(entity);
+    }
+
+    @Override
+    public boolean isPathfindable(BlockState state, PathComputationType type) {
+        return false;
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return Shapes.block();
     }
 
     @Override
@@ -202,11 +208,6 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
                 Mth.lerp(level.random.nextDouble(), minZ, maxZ),
                 0.0, 0.0, 0.0
         );
-    }
-
-    @Override
-    public boolean isPathfindable(BlockState state, PathComputationType type) {
-        return false;
     }
 
     @Override @NotNull

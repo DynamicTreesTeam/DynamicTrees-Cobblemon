@@ -54,6 +54,11 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 neoForge {
     version = project.neo_version
 
+    def at = file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (at.exists()) {
+        accessTransformers.from(at.absolutePath)
+    }
+
     parchment {
         mappingsVersion = project.parchment_mappings_version
         minecraftVersion = project.parchment_minecraft_version
@@ -108,10 +113,10 @@ configurations {
 
 dependencies {
     // Dynamic Trees
-    //implementation "com.dtteam.dynamictrees:dynamictrees-neoforge-${minecraft_version}:${dynamictrees_version}"
-    //implementation "com.dtteam.dynamictreesplus:DynamicTreesPlus:${dynamictreesplus_version}"
-    implementation "curse.maven:dynamictrees-252818:7206627"
-    implementation "curse.maven:dynamictreesplus-478155:7205442"
+    implementation "com.dtteam.dynamictrees:dynamictrees-neoforge-${minecraft_version}:${dynamictrees_version}"
+    implementation "com.dtteam.dynamictreesplus:DynamicTreesPlus:${dynamictreesplus_version}"
+    //implementation "curse.maven:dynamictrees-252818:7206627"
+    //implementation "curse.maven:dynamictreesplus-478155:7205442"
 
     // Utilities
     runtimeOnly "curse.maven:jade-324717:6853386"
@@ -180,13 +185,13 @@ publishMods {
         requires("dynamictrees")
         requires("cobblemon")
     }
-//    modrinth {
-//        projectId = ""
-//        accessToken = modrinthToken ?: System.getenv("MODRINTH_TOKEN")
-//        minecraftVersions.add("1.21.1")
-//        requires("vdjF5PL5") //dt
-//        requires("MdwFAVRL") //cobblemon
-//    }
+    modrinth {
+        projectId = "fWeFCAKx"
+        accessToken = modrinthToken ?: System.getenv("MODRINTH_TOKEN")
+        minecraftVersions.add("1.21.1")
+        requires("vdjF5PL5") //dt
+        requires("MdwFAVRL") //cobblemon
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {
