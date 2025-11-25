@@ -16,6 +16,7 @@ import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Optional;
@@ -43,7 +44,7 @@ public class PlaceHoneyReplacedBehavior extends Behavior<LivingEntity> {
         if (!isValidLeaves(level, pos))
             return false;
 
-        return Vec3.atCenterOf(pos).distanceTo(owner.position()) <= 0.6;
+        return Vec3.atCenterOf(pos).distanceTo(owner.position()) <= 1.2;
     }
 
     private static boolean isValidLeaves(ServerLevel level, BlockPos pos) {
@@ -140,15 +141,15 @@ public class PlaceHoneyReplacedBehavior extends Behavior<LivingEntity> {
 
             if (blockPos != null) {
                 BlockState state = level.getBlockState(blockPos);
-                if (state.getBlock() instanceof DynamicSaccharineLeavesBlock) {
+                if (state.hasProperty(BlockStateProperties.AGE_2)) {
 
-                    int age = state.getValue(DynamicSaccharineLeavesBlock.AGE);
+                    int age = state.getValue(BlockStateProperties.AGE_2);
 
                     if (age < SaccharineLeafBlock.MAX_AGE) {
                         owner.getBrain().eraseMemory(CobblemonMemories.HAS_NECTAR);
 
                         BlockState newState = state.setValue(
-                                DynamicSaccharineLeavesBlock.AGE, age + 1
+                                BlockStateProperties.AGE_2, age + 1
                         );
 
                         level.setBlock(blockPos, newState, 3);

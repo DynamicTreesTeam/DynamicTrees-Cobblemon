@@ -1,0 +1,20 @@
+{
+  "block.dtcobblemon.apricorn_branch": "Noigrume",
+  "block.dtcobblemon.saccharine_branch": "Saccarine",
+  "item.dtcobblemon.black_apricorn_seed": "Germe de Noigrume noir",
+  "item.dtcobblemon.blue_apricorn_seed": "Germe de Noigrume bleu",
+  "item.dtcobblemon.green_apricorn_seed": "Germe de Noigrume vert",
+  "item.dtcobblemon.pink_apricorn_seed": "Germe de Noigrume rose",
+  "item.dtcobblemon.red_apricorn_seed": "Germe de Noigrume rouge",
+  "item.dtcobblemon.saccharine_seed": "Cône de saccarine",
+  "item.dtcobblemon.white_apricorn_seed": "Germe de Noigrume blanc",
+  "item.dtcobblemon.yellow_apricorn_seed": "Germe de Noigrume jaune",
+  "species.dtcobblemon.black_apricorn": "Noigrume noir",
+  "species.dtcobblemon.blue_apricorn": "Noigrume bleu",
+  "species.dtcobblemon.green_apricorn": "Noigrume vert",
+  "species.dtcobblemon.pink_apricorn": "Noigrume rose",
+  "species.dtcobblemon.red_apricorn": "Noigrume rouge",
+  "species.dtcobblemon.saccharine": "Saccarine",
+  "species.dtcobblemon.white_apricorn": "Noigrume blanc",
+  "species.dtcobblemon.yellow_apricorn": "Noigrume jaune"
+}

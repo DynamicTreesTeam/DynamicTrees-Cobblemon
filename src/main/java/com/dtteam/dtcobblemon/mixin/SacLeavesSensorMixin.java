@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SacLeavesSensor.class)
-public class SacDynLeavesSensor {
+public class SacLeavesSensorMixin {
 
     @Inject(method = "isValidLeafBlock", at = @At("HEAD"), cancellable = true, remap = false)
     private void isValidLeafBlock(BlockState state, CallbackInfoReturnable<Boolean> cir){

@@ -82,17 +82,6 @@ public class SaccharineBranchBlock extends BasicBranchBlock {
         return ItemInteractionResult.SUCCESS;
     }
 
-    @Override @NotNull
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        if (context instanceof EntityCollisionContext eContext && TreeHelper.getRadius(level, pos) < 5){
-            Entity entity = eContext.getEntity();
-            if (entity instanceof MoLangScriptingEntity moEntity && moEntity.getConfig().getMap().getOrDefault("can_path_through_sacc_leaves", DoubleValue.ZERO).asDouble() == 1.0){
-                return Shapes.empty();
-            }
-        }
-        return super.getCollisionShape(state, level, pos, context);
-    }
-
 }
 
 //https://gitlab.com/cable-mc/cobblemon/-/blob/main/common/src/main/kotlin/com/cobblemon/mod/common/block/SaccharineLogBlock.kt

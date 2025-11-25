@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(CobblemonBiomeModifiers.class)
-public class CobblemonTreeCanceler {
+public class CobblemonTreeCancelerMixin {
     @Inject(method = "add", at = @At("HEAD"), cancellable = true, remap = false)
     private void cancelTreeGen(@NotNull ResourceKey<PlacedFeature> feature, @NotNull GenerationStep.Decoration step, @Nullable TagKey<Biome> validTag, CallbackInfo ci) {
         //!Services.CONFIG.getBoolConfig(IConfigHelper.WORLD_GEN)

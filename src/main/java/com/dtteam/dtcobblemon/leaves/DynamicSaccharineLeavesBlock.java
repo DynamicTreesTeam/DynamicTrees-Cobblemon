@@ -2,6 +2,7 @@ package com.dtteam.dtcobblemon.leaves;
 
 import com.bedrockk.molang.runtime.value.DoubleValue;
 import com.cobblemon.mod.common.entity.MoLangScriptingEntity;
+import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.dtteam.dynamictrees.block.leaves.DynamicLeavesBlock;
 import com.dtteam.dynamictrees.block.leaves.LeavesProperties;
 import com.dtteam.dynamictrees.tree.ChunkTreeHelper;
@@ -17,6 +18,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -32,6 +34,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
@@ -84,21 +87,44 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
 
     @Override
     public boolean isEntityPassable(@Nullable Entity entity) {
-        if (entity instanceof MoLangScriptingEntity moEntity && moEntity.getConfig().getMap().getOrDefault("can_path_through_sacc_leaves", DoubleValue.ZERO).asDouble() == 1.0){
+        if (entity instanceof PokemonEntity pokemon && pokemon.canPathThroughSaccLeaves()){
             return true;
         }
         return super.isEntityPassable(entity);
     }
-
     @Override
-    public boolean isPathfindable(BlockState state, PathComputationType type) {
-        return false;
+    protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
+        return true;
     }
 
     @Override
-    public @NotNull VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return Shapes.block();
+    public @Nullable PathType getBlockPathType(BlockState state, BlockGetter level, BlockPos pos, @Nullable Mob mob) {
+        if (isEntityPassable(mob)){
+            return PathType.OPEN;
+        }
+        return super.getBlockPathType(state, level, pos, mob);
     }
+
+    @Override
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return super.getShape(pState, pLevel, pPos, pContext);
+    }
+
+    @Override
+    protected VoxelShape getOcclusionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return super.getOcclusionShape(state, level, pos);
+    }
+
+    @Override
+    public VoxelShape getBlockSupportShape(BlockState pState, BlockGetter pReader, BlockPos pPos) {
+        return super.getBlockSupportShape(pState, pReader, pPos);
+    }
+
+
+
+
+
+
 
     @Override
     public boolean isRandomlyTicking(BlockState state) {

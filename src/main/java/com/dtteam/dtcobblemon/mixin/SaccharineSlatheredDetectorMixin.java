@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 @Mixin(SaccharineLogSlatheredDetector.class)
-public class SaccharineSlatheredDetector {
+public class SaccharineSlatheredDetectorMixin {
 
     @Final @Shadow
     public static int RANGE;

@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(SaccharineLogSlatheredInfluence.class)
-public class SaccharineSlatheredInfluence {
+public class SaccharineSlatheredInfluenceMixin {
 
     @Unique
     private boolean dynamicTrees_Cobblemon_1_21_1$activated;

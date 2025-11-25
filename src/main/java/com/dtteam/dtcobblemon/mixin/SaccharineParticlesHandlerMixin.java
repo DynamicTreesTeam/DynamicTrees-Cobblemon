@@ -17,10 +17,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(SaccharineLogBlockParticlesHandler.class)
-public class SaccharineParticlesHandler {
+public class SaccharineParticlesHandlerMixin {
     @Inject(method = "handle(Lcom/cobblemon/mod/common/net/messages/client/effect/SaccharineLogBlockParticlesPacket;Lnet/minecraft/client/Minecraft;)V", at = @At("HEAD"), remap = false)
     private void handlePacket(SaccharineLogBlockParticlesPacket packet, Minecraft client, CallbackInfo ci){
-        ClientLevel level = Minecraft.getInstance().level;
+        ClientLevel level = client.level;
         if (level == null) return;
         BlockState blockState = level.getBlockState(packet.getBlockPos());
         Block block = blockState.getBlock();
