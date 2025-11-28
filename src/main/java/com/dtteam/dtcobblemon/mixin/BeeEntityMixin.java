@@ -23,11 +23,11 @@ public class BeeEntityMixin {
     private void injectCustomGrowth(CallbackInfo ci, @Local(ordinal = 0) BlockState blockState, @Local Block block) {
         if (block instanceof DynamicSaccharineLeavesBlock) {
 
-            int age = blockState.getValue(DynamicSaccharineLeavesBlock.AGE);
+            int age = blockState.getValue(DynamicSaccharineLeavesBlock.HONEY);
             boolean waterlogged = blockState.getValue(BlockStateProperties.WATERLOGGED);
 
             if (age < 2 && !waterlogged) {
-                this.dtcobblemon$result = blockState.setValue(DynamicSaccharineLeavesBlock.AGE, age + 1);
+                this.dtcobblemon$result = blockState.setValue(DynamicSaccharineLeavesBlock.HONEY, age + 1);
             }
         }
     }

@@ -19,7 +19,7 @@ public class SacLeavesSensorMixin {
                     && state.getValue(BlockStateProperties.WATERLOGGED)) {
                 cir.setReturnValue(false);
             }
-            cir.setReturnValue(state.getValue(DynamicSaccharineLeavesBlock.AGE) != DynamicSaccharineLeavesBlock.MAX_AGE);
+            cir.setReturnValue(state.getValue(DynamicSaccharineLeavesBlock.HONEY) != DynamicSaccharineLeavesBlock.MAX_HONEY);
         }
     }
 

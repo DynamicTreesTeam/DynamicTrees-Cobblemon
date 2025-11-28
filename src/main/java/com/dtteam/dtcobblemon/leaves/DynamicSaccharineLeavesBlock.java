@@ -1,7 +1,5 @@
 package com.dtteam.dtcobblemon.leaves;
 
-import com.bedrockk.molang.runtime.value.DoubleValue;
-import com.cobblemon.mod.common.entity.MoLangScriptingEntity;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.dtteam.dynamictrees.block.leaves.DynamicLeavesBlock;
 import com.dtteam.dynamictrees.block.leaves.LeavesProperties;
@@ -38,27 +36,24 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
 
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
-    public static final int MAX_AGE = 2;
-    public static final int MIN_AGE = 0;
+    public static final IntegerProperty HONEY = BlockStateProperties.AGE_2;
+    public static final int MAX_HONEY = 2;
+    public static final int MIN_HONEY = 0;
 
     public DynamicSaccharineLeavesBlock(LeavesProperties leavesProperties, Properties properties) {
         super(leavesProperties, properties);
-        registerDefaultState(defaultBlockState().setValue(AGE, MIN_AGE));
+        registerDefaultState(defaultBlockState().setValue(HONEY, MIN_HONEY));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
+        builder.add(HONEY);
         super.createBlockStateDefinition(builder);
     }
 
@@ -81,9 +76,11 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
         }
     }
 
-    private @NotNull BlockState getLeavesBlockStateForPlacementWithHoney(LevelAccessor accessor, BlockPos pos, BlockState oldState,BlockState newHydroState, boolean worldGen, int oldHydro) {
-        int honey = oldState.getValue(AGE);
-        if (newHydroState.hasProperty(AGE)) newHydroState = newHydroState.setValue(AGE, honey);
+    private @NotNull BlockState getLeavesBlockStateForPlacementWithHoney(LevelAccessor accessor, BlockPos pos, BlockState oldState, BlockState newHydroState, boolean worldGen, int oldHydro) {
+        if (oldState.hasProperty(HONEY)){
+            int honey = oldState.getValue(HONEY);
+            if (newHydroState.hasProperty(HONEY)) newHydroState = newHydroState.setValue(HONEY, honey);
+        }
         return this.getLeavesBlockStateForPlacement(accessor, pos, newHydroState, oldHydro, worldGen);
     }
 
@@ -110,7 +107,7 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
     @Override
     public SoundType getSoundType(BlockState state, LevelReader level, BlockPos pos, @Nullable Entity entity) {
         SoundType defaultType = super.getSoundType(state, level, pos, entity);
-        if (state.hasProperty(AGE) && state.getValue(AGE) > MIN_AGE)
+        if (state.hasProperty(HONEY) && state.getValue(HONEY) > MIN_HONEY)
             return new SoundType(defaultType.volume, defaultType.pitch, defaultType.getBreakSound(), SoundEvents.HONEY_BLOCK_STEP, defaultType.getPlaceSound(), SoundEvents.HONEY_BLOCK_HIT, SoundEvents.HONEY_BLOCK_FALL);
         return defaultType;
     }
@@ -122,17 +119,17 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
 
     @Override
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        int currentAge = state.getValue(AGE);
+        int currentAge = state.getValue(HONEY);
 
-        if (currentAge > MIN_AGE && random.nextInt(2) == 0) {
+        if (currentAge > MIN_HONEY && random.nextInt(2) == 0) {
             for (int i = 1; i <= 10; i++) {
                 BlockPos belowPos = pos.below(i);
                 BlockState belowState = world.getBlockState(belowPos);
 
                 if (!belowState.isAir()) {
                     if (belowState.getBlock() instanceof DynamicSaccharineLeavesBlock) {
-                        int belowAge = belowState.getValue(AGE);
-                        if (belowAge < MAX_AGE) {
+                        int belowAge = belowState.getValue(HONEY);
+                        if (belowAge < MAX_HONEY) {
                             world.setBlock(pos, changeAge(state, -1), Block.UPDATE_CLIENTS);
                             world.setBlock(belowPos, changeAge(belowState, 1), Block.UPDATE_CLIENTS);
                         }
@@ -148,11 +145,11 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
     @Override
     public boolean placeLiquid(LevelAccessor level, BlockPos pos, BlockState state, FluidState fluidState) {
         if (!state.getValue(WATERLOGGED) && fluidState.getType() == Fluids.WATER) {
-            boolean hasHoney = state.getValue(AGE) > 0;
+            boolean hasHoney = state.getValue(HONEY) > 0;
 
             if (!level.isClientSide()) {
                 BlockState newState = state.setValue(WATERLOGGED, true);
-                if (hasHoney) newState = newState.setValue(AGE, 0);
+                if (hasHoney) newState = newState.setValue(HONEY, 0);
 
                 level.setBlock(pos, newState, 3);
                 level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
@@ -171,11 +168,11 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         int particleCount = random.nextInt(3);
 
-        if (state.getValue(AGE) == 1) {
+        if (state.getValue(HONEY) == 1) {
             for (int i = 0; i < particleCount; i++) {
                 spawnHoneyParticles(level, pos, state, 0.025F);
             }
-        } else if (state.getValue(AGE) == 2) {
+        } else if (state.getValue(HONEY) == 2) {
             for (int i = 0; i < particleCount; i++) {
                 spawnHoneyParticles(level, pos, state, 0.05F);
             }
@@ -238,7 +235,7 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
                 player.addItem(new ItemStack(Items.HONEY_BOTTLE));
 
                 level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS);
-                level.setBlock(pos, state.setValue(AGE, 0), 2);
+                level.setBlock(pos, state.setValue(HONEY, 0), 2);
                 level.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
 
                 return ItemInteractionResult.SUCCESS;
@@ -246,7 +243,7 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
                 item.consume(1, player);
 
                 level.playSound(null, pos, SoundEvents.HONEY_BLOCK_PLACE, SoundSource.BLOCKS);
-                level.setBlock(pos, state.setValue(AGE, 2), 2);
+                level.setBlock(pos, state.setValue(HONEY, 2), 2);
                 level.gameEvent(null, GameEvent.BLOCK_CHANGE, pos);
 
                 return ItemInteractionResult.SUCCESS;
@@ -257,16 +254,16 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
     }
 
     private boolean isAtMaxAge(BlockState state) {
-        return state.getValue(AGE) == MAX_AGE;
+        return state.getValue(HONEY) == MAX_HONEY;
     }
 
     private boolean isAtMinAge(BlockState state) {
-        return state.getValue(AGE) == MIN_AGE;
+        return state.getValue(HONEY) == MIN_HONEY;
     }
 
     private BlockState changeAge(BlockState state, int value) {
-        int newAge = Mth.clamp(state.getValue(AGE) + value, MIN_AGE, MAX_AGE);
-        return state.setValue(AGE, newAge);
+        int newAge = Mth.clamp(state.getValue(HONEY) + value, MIN_HONEY, MAX_HONEY);
+        return state.setValue(HONEY, newAge);
     }
 
     private void spawnDestroyHoneyParticles(Level level, BlockPos pos, BlockState state) {
@@ -292,7 +289,7 @@ public class DynamicSaccharineLeavesBlock extends DynamicLeavesBlock {
     @Override
     public void spawnDestroyParticles(Level level, Player player, BlockPos pos, BlockState state) {
         spawnDestroyHoneyParticles(level, pos, state);
-        super.spawnDestroyParticles(level, player, pos, state.setValue(AGE, state.getValue(AGE)));
+        super.spawnDestroyParticles(level, player, pos, state.setValue(HONEY, state.getValue(HONEY)));
     }
 }
 
